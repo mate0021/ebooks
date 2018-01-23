@@ -1,5 +1,7 @@
 package rnd.mate00.ebooks.model;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.Date;
 
 /**
@@ -7,9 +9,12 @@ import java.util.Date;
  */
 public class ReadingProgress {
 
-    private int readerId;
+    // maybe compound key?
+    @ManyToMany
+    private Reader reader;
 
-    private int bookId;
+    @ManyToMany
+    private Book book;
 
     private Date start;
 
