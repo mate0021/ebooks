@@ -1,9 +1,6 @@
 package rnd.mate00.ebooks.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by mate00 on 21.01.18.
@@ -21,5 +18,6 @@ public class Book {
 
     private int locations;
 
-    private int theme;
+    @OneToOne
+    private Theme theme;
 }
