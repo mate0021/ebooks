@@ -16,4 +16,16 @@ public class Theme {
     private int id;
 
     private String theme;
+
+    public Theme(String theme) {
+        this.theme = theme;
+    }
+
+    @Override
+    public String toString() {
+        return "Theme{" +
+                "id=" + id +
+                ", theme='" + theme + '\'' +
+                '}';
+    }
 }
