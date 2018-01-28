@@ -1,12 +1,13 @@
 package rnd.mate00.ebooks.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by mate00 on 21.01.18.
  */
 @Entity
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,11 @@ public class Book {
         this.author = author;
         this.locations = locations;
         this.theme = theme;
+    }
+
+    public Book(int id, String title, String author, int locations, Theme theme) {
+        this(title, author, locations, theme);
+        this.id = id;
     }
 
     public Theme getTheme() {

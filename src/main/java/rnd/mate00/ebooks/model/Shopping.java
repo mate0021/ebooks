@@ -13,13 +13,10 @@ import java.util.Date;
 public class Shopping {
 
     // compound key?
-    @ManyToOne
     private Reader reader;
 
-    @OneToOne
     private Book book;
 
-    @OneToOne
     private Shop shop;
 
     private Date buyDate;

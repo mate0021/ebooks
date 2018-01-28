@@ -1,21 +1,22 @@
 package rnd.mate00.ebooks.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by mate00 on 21.01.18.
  */
 @Entity
-public class Theme {
+public class Theme implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String theme;
+
+//    @OneToOne
+//    private Book book;
 
     public Theme(String theme) {
         this.theme = theme;
