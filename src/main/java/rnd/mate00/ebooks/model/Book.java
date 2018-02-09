@@ -2,6 +2,8 @@ package rnd.mate00.ebooks.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by mate00 on 21.01.18.
@@ -19,9 +21,12 @@ public class Book implements Serializable {
 
     private int locations;
 
-    @OneToOne
-    private Theme theme;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "key.book")
+    private Set<ReadingProgress> readingProgresses = new HashSet<>();
 
+//    @OneToOne
+//    private Theme theme;
+//
     public Book() {
     }
 
@@ -29,7 +34,7 @@ public class Book implements Serializable {
         this.title = title;
         this.author = author;
         this.locations = locations;
-        this.theme = theme;
+//        this.theme = theme;
     }
 
     public Book(int id, String title, String author, int locations, Theme theme) {
@@ -37,8 +42,17 @@ public class Book implements Serializable {
         this.id = id;
     }
 
+    public Book(int id, String title, String author, int locations, Set<ReadingProgress> readingProgresses, Theme theme) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.locations = locations;
+        this.readingProgresses = readingProgresses;
+//        this.theme = theme;
+    }
+
     public Theme getTheme() {
-        return theme;
+        return new Theme("x");
     }
 
     @Override
@@ -48,7 +62,7 @@ public class Book implements Serializable {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", locations=" + locations +
-                ", theme=" + theme +
+//                ", theme=" + theme +
                 '}';
     }
 }
