@@ -2,6 +2,7 @@ package rnd.mate00.ebooks.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by mate00 on 21.01.18.
@@ -15,8 +16,12 @@ public class Theme implements Serializable {
 
     private String theme;
 
-//    @OneToOne
-//    private Book book;
+    @OneToMany
+    private Set<Book> books;
+
+
+    public Theme() {
+    }
 
     public Theme(String theme) {
         this.theme = theme;

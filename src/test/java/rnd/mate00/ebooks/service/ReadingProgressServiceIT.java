@@ -14,6 +14,7 @@ import rnd.mate00.ebooks.model.*;
 import rnd.mate00.ebooks.repository.BookRepository;
 import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ReadingProgressRepository;
+import rnd.mate00.ebooks.repository.ThemeRepository;
 
 import java.time.LocalDate;
 
@@ -37,17 +38,23 @@ public class ReadingProgressServiceIT {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private ThemeRepository themeRepository;
+
     private Reader reader;
 
     private Book book;
+
+    private Theme theme;
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {
+        theme = themeRepository.save(new Theme("criminal"));
         reader = readerRepository.save(new Reader(1, "reader1"));
-        book = bookRepository.save(new Book(1, "title", "author", 3456, new Theme("romance")));
+        book = bookRepository.save(new Book(1, "title", "author", 3456, theme));
     }
 
 

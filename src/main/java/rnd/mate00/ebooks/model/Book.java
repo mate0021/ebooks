@@ -24,9 +24,9 @@ public class Book implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "key.book")
     private Set<ReadingProgress> readingProgresses = new HashSet<>();
 
-//    @OneToOne
-//    private Theme theme;
-//
+    @OneToOne
+    private Theme theme;
+
     public Book() {
     }
 
@@ -34,7 +34,7 @@ public class Book implements Serializable {
         this.title = title;
         this.author = author;
         this.locations = locations;
-//        this.theme = theme;
+        this.theme = theme;
     }
 
     public Book(int id, String title, String author, int locations, Theme theme) {
@@ -48,7 +48,7 @@ public class Book implements Serializable {
         this.author = author;
         this.locations = locations;
         this.readingProgresses = readingProgresses;
-//        this.theme = theme;
+        this.theme = theme;
     }
 
     public Theme getTheme() {
@@ -62,7 +62,7 @@ public class Book implements Serializable {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", locations=" + locations +
-//                ", theme=" + theme +
+                ", theme=" + theme +
                 '}';
     }
 }
