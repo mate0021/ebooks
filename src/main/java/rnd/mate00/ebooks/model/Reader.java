@@ -23,6 +23,10 @@ public class Reader implements Serializable {
     public Reader() {
     }
 
+    public Reader(String name) {
+        this.name = name;
+    }
+
     public Reader(int id, String name) {
         this.id = id;
         this.name = name;
