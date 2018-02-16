@@ -1,19 +1,19 @@
 package rnd.mate00.ebooks.service;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import rnd.mate00.ebooks.model.Book;
-import rnd.mate00.ebooks.model.Reader;
-import rnd.mate00.ebooks.model.Shop;
-import rnd.mate00.ebooks.model.Theme;
+import rnd.mate00.ebooks.model.*;
 import rnd.mate00.ebooks.repository.*;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -63,14 +63,45 @@ public class ShoppingServiceIT {
         subject.buyABook(reader, book, shop, price);
 
         // then
+        assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, shop)).isPresent()).isTrue();
     }
 
     @Test
-    public void readerBuysTheSameBookInDifferentShop() {}
+    public void readerBuysTheSameBookInDifferentShop() {
+        // given
+        Shop otherShop = shopRepository.save(new Shop("Ebookpoint", ""));
+
+        // when
+        subject.buyABook(reader, book, shop, new BigDecimal(21));
+        subject.buyABook(reader, book, otherShop, new BigDecimal(21));
+
+        // then
+        assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, shop)).isPresent()).isTrue();
+        assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, otherShop)).isPresent()).isTrue();
+    }
 
     @Test
-    public void readerCantBuyTheSameBookInTheSameShop() {}
+    public void readerCantBuyTheSameBookInTheSameShop() {
+        // when
+        subject.buyABook(reader, book, shop, new BigDecimal(21));
+        subject.buyABook(reader, book, shop, new BigDecimal(21));
+
+        // then
+        Iterable<Shopping> allById = shoppingRepository.findAllById(Arrays.asList(new ShoppingKey(book, reader, shop)));
+        assertThat(allById.spliterator().getExactSizeIfKnown()).isEqualTo(1);
+    }
 
     @Test
-    public void otherReaderBuysTheSameBook() {}
+    public void otherReaderBuysTheSameBook() {
+        // given
+        Reader otherReader = readerRepository.save(new Reader("other"));
+
+        // when
+        subject.buyABook(reader, book, shop, new BigDecimal(21));
+        subject.buyABook(otherReader, book, shop, new BigDecimal(14));
+
+        // then
+        assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, shop)).isPresent()).isTrue();
+        assertThat(shoppingRepository.findById(new ShoppingKey(book, otherReader, shop)).isPresent()).isTrue();
+    }
 }
