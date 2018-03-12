@@ -23,8 +23,25 @@ public class Theme implements Serializable {
     public Theme() {
     }
 
+    public Theme(int id, String theme) {
+        this.id = id;
+        this.theme = theme;
+    }
+
     public Theme(String theme) {
         this.theme = theme;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
     }
 
     @Override
