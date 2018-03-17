@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import rnd.mate00.ebooks.commands.ThemeCommand;
 import rnd.mate00.ebooks.converters.ThemeCommandToTheme;
+import rnd.mate00.ebooks.converters.ThemeToThemeCommand;
 import rnd.mate00.ebooks.model.Theme;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 
@@ -25,6 +27,9 @@ public class ThemeController {
 
     @Autowired
     private ThemeCommandToTheme themeCommandToTheme;
+
+    @Autowired
+    private ThemeToThemeCommand themeToThemeCommand;
 
     @RequestMapping("/themes")
     public String themeList(Model model){
@@ -48,5 +53,22 @@ public class ThemeController {
         themeRepository.save(themeCommandToTheme.convert(themeCommand));
 
         return "redirect:/themes";
+    }
+
+    @RequestMapping("/theme/{id}/delete")
+    public String deleteTheme(@PathVariable String id) {
+        int themeId = Integer.parseInt(id);
+        themeRepository.deleteById(themeId);
+
+        return "redirect:/themes";
+    }
+
+    @RequestMapping("/theme/{id}/update")
+    public String updateTheme(@PathVariable String id, Model model) {
+        int themeId = Integer.parseInt(id);
+        Theme theme = themeRepository.findById(themeId).orElse(new Theme());
+        model.addAttribute("theme", themeToThemeCommand.convert(theme));
+
+        return "theme/themeform";
     }
 }
