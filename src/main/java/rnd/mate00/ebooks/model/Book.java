@@ -55,6 +55,22 @@ public class Book implements Serializable {
         return new Theme("x");
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getLocations() {
+        return locations;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

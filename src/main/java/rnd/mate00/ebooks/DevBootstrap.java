@@ -5,8 +5,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
+import rnd.mate00.ebooks.repository.BookRepository;
 import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 
@@ -18,15 +20,19 @@ import rnd.mate00.ebooks.repository.ThemeRepository;
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
-    ShopRepository shopRepository;
+    private ShopRepository shopRepository;
 
     @Autowired
-    ThemeRepository themeRepository;
+    private ThemeRepository themeRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         addShops();
         addThemes();
+        addBooks();
     }
 
     private void addShops() {
@@ -53,5 +59,17 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         themeRepository.save(sensation);
 
         System.out.println(String.format("Added %s themes.", themeRepository.count()));
+    }
+
+    private void addBooks() {
+        Book b1 = new Book("Akwarium", "W. Suworow", 4567, themeRepository.findByTheme("Historyczna").orElse(new Theme()));
+        Book b2 = new Book("Łatwo być bogiem", "R. Szmidt", 6789, themeRepository.findByTheme("Sensacja").orElse(new Theme()));
+        Book b3 = new Book("Wektor zagrożenia", "T. Clancy", 8909, themeRepository.findByTheme("Sensacja").orElse(new Theme()));
+
+        bookRepository.save(b1);
+        bookRepository.save(b2);
+        bookRepository.save(b3);
+
+        System.out.println(String.format("Added %s books.", bookRepository.count()));
     }
 }
