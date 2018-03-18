@@ -26,20 +26,10 @@ public class ShopController {
     @Autowired
     private ShopCommandToShop shopCommandToShop;
 
-    @RequestMapping({ "/", "/shop/shopform" })
-    public String mainShopController(Model model) {
-        System.out.println("we're in shop controller");
-        System.out.println(model);
-        model.addAttribute(new Shop("virt", "www"));
-
-        return "shop/shopform";
-    }
 
     @PostMapping
     @RequestMapping("shopForm")
-    public String savingShop(@ModelAttribute ShopCommand shopCommand, Model model) {
-        System.out.println(model);
-        System.out.println(shopCommand);
+    public String savingShop(@ModelAttribute ShopCommand shopCommand) {
         Shop savedShop = shopRepository.save(shopCommandToShop.convert(shopCommand));
 
         return "redirect:/shops";
