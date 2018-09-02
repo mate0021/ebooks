@@ -32,4 +32,12 @@ public class ThemeCommand {
     public void setTheme(String theme) {
         this.theme = theme;
     }
+
+    @Override
+    public String toString() {
+        return "ThemeCommand{" +
+                "id=" + id +
+                ", theme='" + theme + '\'' +
+                '}';
+    }
 }

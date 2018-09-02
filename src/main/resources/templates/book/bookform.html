@@ -46,12 +46,12 @@
 
                                 <div class="col-md-3 form-group">
                                     <label>Theme</label>
-                                    <select class="form-control" name="thyme">
+                                    <select class="form-control" name="theme">
                                         <option th:each="theme : ${themeList}"
                                                 th:value="${theme.id}"
-                                                th:selected="${theme.id.equals(book.theme.id)}"
-                                                th:text="${theme:theme}">Theme choice</option>
+                                                th:text="${theme.theme}">Theme choice</option>
                                     </select>
+                                                th:selected="${theme.id.equals(book.theme.id)}"
                                 </div>
                             </div>
                         </div>

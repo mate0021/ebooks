@@ -17,6 +17,8 @@ public class BookCommand {
 
     private Theme theme;
 
+    private ThemeCommand themeCommand;
+
     public BookCommand() {
     }
 
@@ -66,5 +68,24 @@ public class BookCommand {
 
     public void setTheme(Theme theme) {
         this.theme = theme;
+    }
+
+    public ThemeCommand getThemeCommand() {
+        return themeCommand;
+    }
+
+    public void setThemeCommand(ThemeCommand themeCommand) {
+        this.themeCommand = themeCommand;
+    }
+
+    @Override
+    public String toString() {
+        return "BookCommand{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", locations=" + locations +
+                ", theme=" + theme +
+                '}';
     }
 }

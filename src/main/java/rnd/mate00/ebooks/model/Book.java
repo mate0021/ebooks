@@ -52,7 +52,7 @@ public class Book implements Serializable {
     }
 
     public Theme getTheme() {
-        return new Theme("x");
+        return theme;
     }
 
     public int getId() {
