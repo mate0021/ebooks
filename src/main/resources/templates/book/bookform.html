@@ -49,9 +49,10 @@
                                     <select class="form-control" name="theme">
                                         <option th:each="theme : ${themeList}"
                                                 th:value="${theme.id}"
-                                                th:text="${theme.theme}">Theme choice</option>
+                                                th:text="${theme.theme}"
+                                                th:selected="${theme.id.equals(book.theme.id)}">
+                                        Theme choice</option>
                                     </select>
-                                                th:selected="${theme.id.equals(book.theme.id)}"
                                 </div>
                             </div>
                         </div>
