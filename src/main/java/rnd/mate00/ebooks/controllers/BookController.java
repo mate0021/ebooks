@@ -94,4 +94,13 @@ public class BookController {
 
         return "redirect:/books";
     }
+
+    @RequestMapping("/books/{id}/details")
+    public String bookDetails(Model model) {
+        List<BookCommand> bookBeans = new ArrayList<>();
+        bookRepository.findAll().forEach(b -> bookBeans.add(bookToBookCommand.convert(b)));
+        model.addAttribute("allBooks", bookBeans);
+
+        return "book/bookdetails";
+    }
 }
