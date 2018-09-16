@@ -13,9 +13,12 @@ import rnd.mate00.ebooks.converters.BookCommandToBook;
 import rnd.mate00.ebooks.converters.BookToBookCommand;
 import rnd.mate00.ebooks.converters.ThemeToThemeCommand;
 import rnd.mate00.ebooks.model.Book;
+import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Theme;
 import rnd.mate00.ebooks.repository.BookRepository;
+import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
+import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,9 @@ public class BookController {
 
     @Autowired
     private ThemeToThemeCommand themeToThemeCommand;
+
+    @Autowired
+    private ReadingProgressService readingProgressService;
 
     @RequestMapping("/books")
     public String listBooks(Model model) {
@@ -102,5 +108,22 @@ public class BookController {
         model.addAttribute("book", book);
 
         return "book/bookdetails";
+    }
+
+    @Autowired
+    private ReaderRepository readerRepository;
+
+    @RequestMapping("/books/{id}/start")
+    public String startReading(@PathVariable String id) {
+        int bookId = Integer.parseInt(id);
+        Book book = bookRepository.findById(bookId).orElse(new Book());
+        readingProgressService.startReadingBook(book, addDummyReader());
+
+        return "book/booklist";
+    }
+
+    private Reader addDummyReader() {
+        Reader reader = new Reader("dummy reader");
+        return readerRepository.save(reader);
     }
 }
