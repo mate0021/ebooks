@@ -96,10 +96,10 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/details")
-    public String bookDetails(Model model) {
-        List<BookCommand> bookBeans = new ArrayList<>();
-        bookRepository.findAll().forEach(b -> bookBeans.add(bookToBookCommand.convert(b)));
-        model.addAttribute("allBooks", bookBeans);
+    public String bookDetails(@PathVariable String id, Model model) {
+        int bookId = Integer.parseInt(id);
+        Book book = bookRepository.findById(bookId).orElse(new Book());
+        model.addAttribute("book", book);
 
         return "book/bookdetails";
     }
