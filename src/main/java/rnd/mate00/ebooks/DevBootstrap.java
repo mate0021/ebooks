@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import rnd.mate00.ebooks.model.Book;
+import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
 import rnd.mate00.ebooks.repository.BookRepository;
+import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 
@@ -28,11 +30,15 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private ReaderRepository readerRepository;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         addShops();
         addThemes();
         addBooks();
+        addReaders();
     }
 
     private void addShops() {
@@ -71,5 +77,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         bookRepository.save(b3);
 
         System.out.println(String.format("Added %s books.", bookRepository.count()));
+    }
+
+    private void addReaders() {
+        Reader reader = new Reader("John Read");
+
+        readerRepository.save(reader);
+
+        System.out.println(String.format("Added %s reader(s).", readerRepository.count()));
     }
 }

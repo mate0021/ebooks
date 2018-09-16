@@ -47,6 +47,10 @@ public class BookController {
     @Autowired
     private ReadingProgressService readingProgressService;
 
+    @Autowired
+    private ReaderRepository readerRepository;
+
+
     @RequestMapping("/books")
     public String listBooks(Model model) {
         List<Book> bookList = new ArrayList<>();
@@ -110,20 +114,13 @@ public class BookController {
         return "book/bookdetails";
     }
 
-    @Autowired
-    private ReaderRepository readerRepository;
-
     @RequestMapping("/books/{id}/start")
     public String startReading(@PathVariable String id) {
         int bookId = Integer.parseInt(id);
         Book book = bookRepository.findById(bookId).orElse(new Book());
-        readingProgressService.startReadingBook(book, addDummyReader());
+        Reader loggedReader = readerRepository.findById(1).get();
+        readingProgressService.startReadingBook(book, loggedReader);
 
         return "book/booklist";
-    }
-
-    private Reader addDummyReader() {
-        Reader reader = new Reader("dummy reader");
-        return readerRepository.save(reader);
     }
 }
