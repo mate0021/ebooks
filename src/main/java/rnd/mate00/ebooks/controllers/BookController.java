@@ -115,22 +115,26 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/start")
-    public String startReading(@PathVariable String id) {
+    public String startReading(@PathVariable String id, Model model) {
         int bookId = Integer.parseInt(id);
         Book book = bookRepository.findById(bookId).orElse(new Book());
         Reader loggedReader = readerRepository.findById(1).get();
         readingProgressService.startReadingBook(book, loggedReader);
 
-        return "book/booklist";
+        model.addAttribute(book);
+
+        return "book/bookdetails";
     }
 
     @RequestMapping("/books/{id}/finish")
-    public String finishReading(@PathVariable String id) {
+    public String finishReading(@PathVariable String id, Model model) {
         int bookId = Integer.parseInt(id);
         Book book = bookRepository.findById(bookId).orElse(new Book());
         Reader reader = readerRepository.findById(1).get();
         readingProgressService.stopReadingBook(book, reader);
 
-        return "book/booklist";
+        model.addAttribute(book);
+
+        return "book/bookdetails";
     }
 }
