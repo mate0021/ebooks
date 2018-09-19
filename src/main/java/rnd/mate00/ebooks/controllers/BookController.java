@@ -123,4 +123,14 @@ public class BookController {
 
         return "book/booklist";
     }
+
+    @RequestMapping("/books/{id}/finish")
+    public String finishReading(@PathVariable String id) {
+        int bookId = Integer.parseInt(id);
+        Book book = bookRepository.findById(bookId).orElse(new Book());
+        Reader reader = readerRepository.findById(1).get();
+        readingProgressService.stopReadingBook(book, reader);
+
+        return "book/booklist";
+    }
 }

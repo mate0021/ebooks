@@ -45,6 +45,7 @@ public class ReadingProgressService {
         readingProgressRepository.save(progress);
     }
 
+    @Transactional
     public void stopReadingBook(Book book, Reader reader) {
         stopReadingBook(book, reader, LocalDate.now());
     }
