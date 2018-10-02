@@ -50,7 +50,7 @@
                                         <option th:each="theme : ${themeList}"
                                                 th:value="${theme.id}"
                                                 th:text="${theme.theme}"
-                                                th:selected="${theme.id.equals(book.theme.id)}">
+                                                th:selected="${book.theme != null && theme.id.equals(book.theme.id)}">
                                         Theme choice</option>
                                     </select>
                                 </div>
