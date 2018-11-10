@@ -3,6 +3,7 @@ package rnd.mate00.ebooks.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -80,5 +81,22 @@ public class Book implements Serializable {
                 ", locations=" + locations +
                 ", theme=" + theme +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id &&
+                locations == book.locations &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(theme, book.theme);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, author, locations, theme);
     }
 }

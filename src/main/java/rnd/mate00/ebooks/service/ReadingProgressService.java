@@ -11,8 +11,13 @@ import rnd.mate00.ebooks.repository.ReadingProgressRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by mate00 on 28.01.18.
@@ -63,5 +68,13 @@ public class ReadingProgressService {
                 readingProgressRepository.setEndDateForReadingProgress(endDate, book, reader);
             }
         }
+    }
+
+    public List<Book> getBooksInProgress(Reader reader) {
+        List<ReadingProgressKey> startedByKeyReader = readingProgressRepository.findStartedByKeyReader(reader);
+
+        return startedByKeyReader.stream()
+                .map(ReadingProgressKey::getBook)
+                .collect(toList());
     }
 }

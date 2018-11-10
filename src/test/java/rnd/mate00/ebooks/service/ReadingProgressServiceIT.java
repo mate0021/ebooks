@@ -17,6 +17,9 @@ import rnd.mate00.ebooks.repository.ReadingProgressRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by mate00 on 28.01.18.
@@ -71,13 +74,13 @@ public class ReadingProgressServiceIT {
                 findById(new ReadingProgressKey(reader, book)).
                 orElse(new ReadingProgress());
 
-        Assertions.assertThat(readingProgress.getStart())
+        assertThat(readingProgress.getStart())
                 .isNotNull()
                 .hasYear(2018)
                 .hasMonth(2)
                 .hasDayOfMonth(5);
 
-        Assertions.assertThat(readingProgress.getEnd()).isNull();
+        assertThat(readingProgress.getEnd()).isNull();
     }
 
     @Test
@@ -122,12 +125,50 @@ public class ReadingProgressServiceIT {
                 findById(new ReadingProgressKey(reader, book)).
                 orElse(new ReadingProgress());
 
-        Assertions.assertThat(readingProgress.getStart()).isNotNull();
-        Assertions.assertThat(readingProgress.getEnd())
+        assertThat(readingProgress.getStart()).isNotNull();
+        assertThat(readingProgress.getEnd())
                 .isNotNull()
                 .hasYear(2018)
                 .hasMonth(3)
                 .hasDayOfMonth(5);
     }
 
+    @Test
+    public void shouldGetBooksInProgress() {
+        // given
+        Book finishedBook = bookRepository.save(new Book("finished", "Alex Finish", 100, theme));
+        Book startedBook = bookRepository.save(new Book("started", "Bob Starter", 134, theme));
+        Book newBook = bookRepository.save(new Book("new", "Brand New", 123, theme));
+
+        readingProgressService.startReadingBook(finishedBook, reader);
+        readingProgressService.stopReadingBook(finishedBook, reader);
+
+        readingProgressService.startReadingBook(startedBook, reader);
+
+        // when
+        List<Book> booksInProgress = readingProgressService.getBooksInProgress(reader);
+
+        // then
+        assertThat(booksInProgress)
+                .isNotNull()
+                .isNotEmpty()
+                .containsExactly(startedBook);
+    }
+
+    @Test
+    public void shouldReturnEmptyList_WhenAllBooksFinished() {
+        // given
+        Book finishedBook = bookRepository.save(new Book("finished", "AlexFinish", 100, theme));
+
+        readingProgressService.startReadingBook(finishedBook, reader);
+        readingProgressService.stopReadingBook(finishedBook, reader);
+
+        // when
+        List<Book> booksInProgress = readingProgressService.getBooksInProgress(reader);
+
+        // then
+        assertThat(booksInProgress)
+                .isNotNull()
+                .isEmpty();
+    }
 }

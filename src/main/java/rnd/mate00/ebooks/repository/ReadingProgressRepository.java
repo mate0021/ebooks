@@ -10,6 +10,7 @@ import rnd.mate00.ebooks.model.ReadingProgress;
 import rnd.mate00.ebooks.model.ReadingProgressKey;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by mate00 on 28.01.18.
@@ -22,4 +23,6 @@ public interface ReadingProgressRepository extends CrudRepository<ReadingProgres
                                      @Param("keyBook") Book book,
                                      @Param("keyReader") Reader reader);
 
+    @Query("select key, start from reading_progress where key_reader = :keyReader and reading_end is null")
+    List<ReadingProgressKey> findStartedByKeyReader(@Param("keyReader") Reader reader);
 }
