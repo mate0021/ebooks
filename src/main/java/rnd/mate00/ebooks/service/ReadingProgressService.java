@@ -11,11 +11,9 @@ import rnd.mate00.ebooks.repository.ReadingProgressRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -62,7 +60,7 @@ public class ReadingProgressService {
         if (byId.isPresent()) {
             ReadingProgress progress = byId.get();
             if (progress.getEnd() != null) {
-                    throw new IllegalArgumentException("Can't stop already stopped book");
+                throw new IllegalArgumentException("Can't stop already stopped book");
             } else {
                 Date endDate = Date.from(stopDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 readingProgressRepository.setEndDateForReadingProgress(endDate, book, reader);
@@ -70,11 +68,11 @@ public class ReadingProgressService {
         }
     }
 
-    public List<Book> getBooksInProgress(Reader reader) {
-        List<ReadingProgressKey> startedByKeyReader = readingProgressRepository.findStartedByKeyReader(reader);
+    public List<ReadingProgress> getBooksInProgress(Reader reader) {
+        List<ReadingProgress> startedByReader = readingProgressRepository.findStartedByKeyReader(reader);
 
-        return startedByKeyReader.stream()
-                .map(ReadingProgressKey::getBook)
+        return startedByReader.stream()
+//                .map(ReadingProgressKey::getBook)
                 .collect(toList());
     }
 }

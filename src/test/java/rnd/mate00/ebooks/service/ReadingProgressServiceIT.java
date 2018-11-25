@@ -1,6 +1,5 @@
 package rnd.mate00.ebooks.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -139,20 +138,27 @@ public class ReadingProgressServiceIT {
         Book finishedBook = bookRepository.save(new Book("finished", "Alex Finish", 100, theme));
         Book startedBook = bookRepository.save(new Book("started", "Bob Starter", 134, theme));
         Book newBook = bookRepository.save(new Book("new", "Brand New", 123, theme));
+        LocalDate startDate = LocalDate.of(2015, 11, 21);
+        LocalDate endDate = LocalDate.of(2016, 1, 5);
 
-        readingProgressService.startReadingBook(finishedBook, reader);
-        readingProgressService.stopReadingBook(finishedBook, reader);
+        readingProgressService.startReadingBook(finishedBook, reader, startDate);
+        readingProgressService.stopReadingBook(finishedBook, reader, endDate);
 
-        readingProgressService.startReadingBook(startedBook, reader);
+        readingProgressService.startReadingBook(startedBook, reader, startDate);
 
         // when
-        List<Book> booksInProgress = readingProgressService.getBooksInProgress(reader);
+        List<ReadingProgress> booksInProgress = readingProgressService.getBooksInProgress(reader);
 
         // then
         assertThat(booksInProgress)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactly(startedBook);
+                .contains(
+                        new ReadingProgress(
+                                new ReadingProgressKey(reader, startedBook),
+                                java.sql.Date.valueOf(startDate),
+                                null)
+                );
     }
 
     @Test
@@ -164,7 +170,8 @@ public class ReadingProgressServiceIT {
         readingProgressService.stopReadingBook(finishedBook, reader);
 
         // when
-        List<Book> booksInProgress = readingProgressService.getBooksInProgress(reader);
+        List<Book> inProgress = null;//readingProgressService.getBooksInProgress(reader);
+        List<ReadingProgress> booksInProgress = readingProgressService.getBooksInProgress(reader);
 
         // then
         assertThat(booksInProgress)

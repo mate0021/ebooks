@@ -2,8 +2,12 @@ package rnd.mate00.ebooks.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
+
+import static java.time.ZoneId.systemDefault;
+import static java.util.Date.from;
 
 /**
  * Created by mate00 on 21.01.18.
@@ -36,6 +40,10 @@ public class ReadingProgress implements Serializable {
         this.key = key;
         this.start = start;
         this.end = end;
+    }
+
+    public ReadingProgress(ReadingProgressKey key, LocalDate start, LocalDate end) {
+        this(key, from(start.atStartOfDay(systemDefault()).toInstant()), from(end.atStartOfDay(systemDefault()).toInstant()));
     }
 
     @Transient

@@ -23,6 +23,6 @@ public interface ReadingProgressRepository extends CrudRepository<ReadingProgres
                                      @Param("keyBook") Book book,
                                      @Param("keyReader") Reader reader);
 
-    @Query("select key, start from reading_progress where key_reader = :keyReader and reading_end is null")
-    List<ReadingProgressKey> findStartedByKeyReader(@Param("keyReader") Reader reader);
+    @Query("select rp from reading_progress rp where key_reader = :keyReader and reading_end is null")
+    List<ReadingProgress> findStartedByKeyReader(@Param("keyReader") Reader reader);
 }

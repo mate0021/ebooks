@@ -3,6 +3,7 @@ package rnd.mate00.ebooks.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -36,5 +37,28 @@ public class Reader implements Serializable {
         this.id = id;
         this.name = name;
         this.readingProgresses = readingProgresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", readingProgresses=" + readingProgresses +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reader reader = (Reader) o;
+        return id == reader.id &&
+                Objects.equals(name, reader.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
