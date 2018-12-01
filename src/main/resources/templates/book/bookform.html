@@ -29,6 +29,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
+                                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                    <p>Please Correct Errors Below</p>
+                                </div>
                                 <div class="col-md-3 form-group">
                                     <label>Title:</label>
                                     <input type="text" class="form-control" th:field="*{title}"/>

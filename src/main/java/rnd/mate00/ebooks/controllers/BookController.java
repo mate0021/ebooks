@@ -3,6 +3,7 @@ package rnd.mate00.ebooks.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +65,6 @@ public class BookController {
 
     @RequestMapping("/books/add")
     public String addBook(Model model) {
-        Iterable<Theme> themeIterable = themeRepository.findAll();
         List<ThemeCommand> themes = new ArrayList<>();
         themeRepository.findAll().forEach(t -> themes.add(themeToThemeCommand.convert(t)));
         model.addAttribute("themeList", themes);
@@ -90,7 +91,12 @@ public class BookController {
 
     @PostMapping
     @RequestMapping("/bookForm")
-    public String saveBook(@ModelAttribute BookCommand bookCommand) {
+    public String saveBook(@Valid @ModelAttribute(name = "book") BookCommand bookCommand,
+                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "book/bookform";
+        }
+
         Book book = bookCommandToBook.convert(bookCommand);
         Book savedBook = bookRepository.save(book);
 

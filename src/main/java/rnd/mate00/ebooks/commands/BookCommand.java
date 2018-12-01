@@ -2,6 +2,9 @@ package rnd.mate00.ebooks.commands;
 
 import rnd.mate00.ebooks.model.Theme;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 /**
  * Created by mate00 on 17.03.18.
  */
@@ -9,10 +12,13 @@ public class BookCommand {
 
     private int id;
 
+    @NotBlank
     private String title;
 
+    @NotBlank
     private String author;
 
+    @Min(1)
     private int locations;
 
     private Theme theme;
