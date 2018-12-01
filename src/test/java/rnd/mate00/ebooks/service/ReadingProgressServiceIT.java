@@ -170,7 +170,6 @@ public class ReadingProgressServiceIT {
         readingProgressService.stopReadingBook(finishedBook, reader);
 
         // when
-        List<Book> inProgress = null;//readingProgressService.getBooksInProgress(reader);
         List<ReadingProgress> booksInProgress = readingProgressService.getBooksInProgress(reader);
 
         // then

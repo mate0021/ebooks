@@ -71,8 +71,6 @@ public class ReadingProgressService {
     public List<ReadingProgress> getBooksInProgress(Reader reader) {
         List<ReadingProgress> startedByReader = readingProgressRepository.findStartedByKeyReader(reader);
 
-        return startedByReader.stream()
-//                .map(ReadingProgressKey::getBook)
-                .collect(toList());
+        return startedByReader.stream().collect(toList());
     }
 }
