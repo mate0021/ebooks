@@ -39,6 +39,30 @@ public class Reader implements Serializable {
         this.readingProgresses = readingProgresses;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<ReadingProgress> getReadingProgresses() {
+        return readingProgresses;
+    }
+
+    public void setReadingProgresses(Set<ReadingProgress> readingProgresses) {
+        this.readingProgresses = readingProgresses;
+    }
+
     @Override
     public String toString() {
         return "Reader{" +

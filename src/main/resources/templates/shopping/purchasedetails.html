@@ -33,7 +33,7 @@
                 <div class="panel-body">
                     <form th:object="${purchase}" th:action="@{'/buyBook'}">
                         <input type="hidden" th:field="*{bookId}"/>
-                        <input type="hidden" th:field="*{reader}">
+                        <input type="hidden" th:value="*{reader.id}" name="reader">
                         <div class="table-responsive">
                             <table>
                                 <tr>
