@@ -1,5 +1,6 @@
 package rnd.mate00.ebooks.commands;
 
+import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Shop;
 
@@ -12,36 +13,18 @@ import java.util.Objects;
  */
 public class PurchaseCommand {
 
-    private int bookId;
-    private String title;
-    private String author;
+    private Book book;
     private Reader reader;
     private BigDecimal price;
     private Date buyDate;
     private Shop shop;
 
-    public int getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public Reader getReader() {
@@ -81,9 +64,7 @@ public class PurchaseCommand {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PurchaseCommand that = (PurchaseCommand) o;
-        return bookId == that.bookId &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(author, that.author) &&
+        return Objects.equals(book, that.book) &&
                 Objects.equals(reader, that.reader) &&
                 Objects.equals(price, that.price) &&
                 Objects.equals(buyDate, that.buyDate) &&
@@ -92,15 +73,13 @@ public class PurchaseCommand {
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookId, title, author, reader, price, buyDate, shop);
+        return Objects.hash(book, reader, price, buyDate, shop);
     }
 
     @Override
     public String toString() {
         return "PurchaseCommand{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                "book=" + book +
                 ", reader=" + reader +
                 ", price=" + price +
                 ", buyDate=" + buyDate +

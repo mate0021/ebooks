@@ -32,17 +32,15 @@
                 </div>
                 <div class="panel-body">
                     <form th:object="${purchase}" th:action="@{'/buyBook'}">
-                        <input type="hidden" th:field="*{bookId}"/>
+                        <input type="hidden" th:value="*{book.id}" name="book">
                         <input type="hidden" th:value="*{reader.id}" name="reader">
                         <div class="table-responsive">
                             <table>
                                 <tr>
-                                    <td th:text="*{title}">Title</td>
-                                    <input type="hidden" th:field="*{title}"/>
+                                    <td th:text="*{book.title}">Title</td>
                                 </tr>
                                 <tr>
-                                    <td th:text="*{author}">Author</td>
-                                    <input type="hidden" th:field="*{author}"/>
+                                    <td th:text="*{book.author}">Author</td>
                                 </tr>
                                 <tr>
                                     <td>Shop:</td>

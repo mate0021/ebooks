@@ -153,9 +153,7 @@ public class BookController {
         Book book = findBookById(id);
 
         PurchaseCommand purchaseBean = new PurchaseCommand();
-        purchaseBean.setBookId(book.getId());
-        purchaseBean.setTitle(book.getTitle());
-        purchaseBean.setAuthor(book.getAuthor());
+        purchaseBean.setBook(book);
         purchaseBean.setReader(readerRepository.findById(1).get());
         List<Shop> shops = new ArrayList<>();
         shopRepository.findAll().forEach(s -> shops.add(s));
