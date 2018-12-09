@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Purchase details</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <a href="/books">Books</a>
+                <a href="/themes">Themes</a>
+                <a href="/shops">Bookstores</a>
+                <a href="/readers">Readers</a>
+                <a href="/readings">Readings</a>
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">Purchase details</h1>
+                </div>
+                <div class="panel-body">
+                    <form th:object="${purchase}" th:action="@{'/buyBook'}">
+                        <input type="hidden" th:field="*{bookId}"/>
+                        <input type="hidden" th:field="*{reader}">
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <td th:text="*{title}">Title</td>
+                                    <input type="hidden" th:field="*{title}"/>
+                                </tr>
+                                <tr>
+                                    <td th:text="*{author}">Author</td>
+                                    <input type="hidden" th:field="*{author}"/>
+                                </tr>
+                                <tr>
+                                    <td>Shop:</td>
+                                    <td>
+                                        <select class="form-control" name="shop">
+                                            <option th:each="shop : ${shopList}"
+                                                    th:value="${shop.id}"
+                                                    th:text="${shop.name}"/>
+                                        </select>
+                                    </td>
+                                    <td>Price:</td>
+                                    <td>
+                                        <input type="number" class="form-control" th:field="*{price}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

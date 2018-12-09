@@ -9,21 +9,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import rnd.mate00.ebooks.commands.BookCommand;
+import rnd.mate00.ebooks.commands.PurchaseCommand;
 import rnd.mate00.ebooks.commands.ThemeCommand;
 import rnd.mate00.ebooks.converters.BookCommandToBook;
 import rnd.mate00.ebooks.converters.BookToBookCommand;
 import rnd.mate00.ebooks.converters.ThemeToThemeCommand;
 import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
+import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
 import rnd.mate00.ebooks.repository.BookRepository;
 import rnd.mate00.ebooks.repository.ReaderRepository;
+import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * Created by mate00 on 17.03.18.
@@ -52,6 +57,9 @@ public class BookController {
     @Autowired
     private ReaderRepository readerRepository;
 
+    @Autowired
+    private ShopRepository shopRepository;
+
 
     @RequestMapping("/books")
     public String listBooks(Model model) {
@@ -77,8 +85,7 @@ public class BookController {
 
     @RequestMapping("/books/{id}/update")
     public String updateBook(@PathVariable String id, Model model) {
-        int bookId = Integer.parseInt(id);
-        Book book = bookRepository.findById(bookId).orElse(new Book());
+        Book book = findBookById(id);
         BookCommand bookBackingBean = bookToBookCommand.convert(book);
 
         List<Theme> themes = new ArrayList<>();
@@ -105,7 +112,7 @@ public class BookController {
 
     @RequestMapping("/books/{id}/delete")
     public String deleteBook(@PathVariable String id) {
-        int bookId = Integer.parseInt(id);
+        int bookId = parseInt(id);
         bookRepository.deleteById(bookId);
 
         return "redirect:/books";
@@ -113,8 +120,7 @@ public class BookController {
 
     @RequestMapping("/books/{id}/details")
     public String bookDetails(@PathVariable String id, Model model) {
-        int bookId = Integer.parseInt(id);
-        Book book = bookRepository.findById(bookId).orElse(new Book());
+        Book book = findBookById(id);
         model.addAttribute("book", book);
 
         return "book/bookdetails";
@@ -122,8 +128,7 @@ public class BookController {
 
     @RequestMapping("/books/{id}/start")
     public String startReading(@PathVariable String id, Model model) {
-        int bookId = Integer.parseInt(id);
-        Book book = bookRepository.findById(bookId).orElse(new Book());
+        Book book = findBookById(id);
         Reader loggedReader = readerRepository.findById(1).get();
         readingProgressService.startReadingBook(book, loggedReader);
 
@@ -134,13 +139,36 @@ public class BookController {
 
     @RequestMapping("/books/{id}/finish")
     public String finishReading(@PathVariable String id, Model model) {
-        int bookId = Integer.parseInt(id);
-        Book book = bookRepository.findById(bookId).orElse(new Book());
+        Book book = findBookById(id);
         Reader reader = readerRepository.findById(1).get();
         readingProgressService.stopReadingBook(book, reader);
 
         model.addAttribute(book);
 
         return "book/bookdetails";
+    }
+
+    @RequestMapping("/books/{id}/buy")
+    public String buyBook(@PathVariable String id, Model model) {
+        Book book = findBookById(id);
+
+        PurchaseCommand purchaseBean = new PurchaseCommand();
+        purchaseBean.setBookId(book.getId());
+        purchaseBean.setTitle(book.getTitle());
+        purchaseBean.setAuthor(book.getAuthor());
+        purchaseBean.setReader(readerRepository.findById(1).get());
+        List<Shop> shops = new ArrayList<>();
+        shopRepository.findAll().forEach(s -> shops.add(s));
+
+        model.addAttribute("purchase", purchaseBean);
+        model.addAttribute("shopList", shops);
+
+        return "shopping/purchasedetails";
+    }
+
+    private Book findBookById(String id) {
+        int bookId = parseInt(id);
+        Book book = bookRepository.findById(bookId).orElse(new Book());
+        return book;
     }
 }
