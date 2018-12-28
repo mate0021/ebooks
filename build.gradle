@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+		springBootVersion = '2.1.0.M2'
 	}
 	repositories {
 		mavenCentral()
@@ -20,7 +20,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'rnd.mate00'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+//sourceCompatibility = 10
 
 repositories {
 	mavenCentral()
@@ -37,6 +37,7 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
     runtime('org.webjars:bootstrap:3.3.7-1')
+	runtime('javax.xml.bind:jaxb-api:2.3.0')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.assertj:assertj-core')
