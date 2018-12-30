@@ -38,6 +38,7 @@
                                 <th>Theme</th>
                                 <th>Start reading</th>
                                 <th>Finish reading</th>
+                                <th>Buy</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
@@ -47,7 +48,7 @@
                                 <td>4576</td>
                                 <td><a href="#">Details</a></td>
                                 <td><a href="#">Update</a></td>
-                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Buy</a></td>
                             </tr>
                             <tr th:remove="all">
                                 <td>12333</td>
@@ -56,7 +57,7 @@
                                 <td>2345</td>
                                 <td><a href="#">Details</a></td>
                                 <td><a href="#">Update</a></td>
-                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Buy</a></td>
                             </tr>
                             <tr>
                                 <td th:text="${book.id}">334</td>
@@ -66,6 +67,7 @@
                                 <td th:text="${book.theme}">criminal</td>
                                 <td><a href="#" th:href="@{'/books/' + ${book.id} + '/start'}">Start</a></td>
                                 <td><a href="#" th:href="@{'/books/' + ${book.id} + '/finish'}">Finish</a></td>
+                                <td><a href="#" th:href="@{'/books/' + ${book.id} + '/buy'}">Buy</a></td>
                             </tr>
                             <tr><td><a href="#" th:href="@{'/books/' + ${book.id} + '/delete'}">Delete</a></td></tr>
                         </table>
