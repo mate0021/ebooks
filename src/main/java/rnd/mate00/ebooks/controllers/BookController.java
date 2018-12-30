@@ -61,7 +61,7 @@ public class BookController {
     private ShopRepository shopRepository;
 
 
-    @RequestMapping("/books")
+    @RequestMapping({"/books", "/"})
     public String listBooks(Model model) {
         List<Book> bookList = new ArrayList<>();
         bookRepository.findAll().forEach(bookList::add);

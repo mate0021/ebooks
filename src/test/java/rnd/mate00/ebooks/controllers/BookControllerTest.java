@@ -53,6 +53,14 @@ public class BookControllerTest {
     }
 
     @Test
+    public void shouldShowAllBooks_OnRoot() throws Exception {
+        // when
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("book/booklist"));
+    }
+
+    @Test
     public void shouldShowDetailsOfTheBook_WhenStartReading() throws Exception {
         // when
         mockMvc.perform(get("/books/1/start"))
