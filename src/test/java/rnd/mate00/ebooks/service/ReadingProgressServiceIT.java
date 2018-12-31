@@ -177,4 +177,28 @@ public class ReadingProgressServiceIT {
                 .isNotNull()
                 .isEmpty();
     }
+
+    @Test
+    public void shouldReturnNull_WhenBookIsNotStarted() {
+        // when
+        ReadingProgress progress = readingProgressService.getReadingProgressFor(book, reader);
+
+        // then
+        assertThat(progress).isNull();
+    }
+
+    @Test
+    public void shouldReturnReadingProgress_WhenBookIsStarted() {
+        // given
+        readingProgressService.startReadingBook(book, reader);
+
+        // when
+        ReadingProgress progress = readingProgressService.getReadingProgressFor(book, reader);
+
+        // then
+        assertThat(progress)
+                .isNotNull()
+                .extracting(ReadingProgress::getStart)
+                .isNotNull();
+    }
 }

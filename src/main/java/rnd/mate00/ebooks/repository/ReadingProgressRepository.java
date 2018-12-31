@@ -25,4 +25,6 @@ public interface ReadingProgressRepository extends CrudRepository<ReadingProgres
 
     @Query("select rp from reading_progress rp where key_reader = :keyReader and reading_end is null")
     List<ReadingProgress> findStartedByKeyReader(@Param("keyReader") Reader reader);
+
+    ReadingProgress findByKey(ReadingProgressKey key);
 }

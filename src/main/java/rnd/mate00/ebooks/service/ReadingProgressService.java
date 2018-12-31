@@ -73,4 +73,8 @@ public class ReadingProgressService {
 
         return startedByReader.stream().collect(toList());
     }
+
+    public ReadingProgress getReadingProgressFor(Book book, Reader reader) {
+        return readingProgressRepository.findByKey(new ReadingProgressKey(reader, book));
+    }
 }
