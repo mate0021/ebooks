@@ -18,7 +18,7 @@ public class Reader implements Serializable {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "key.reader", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "key.reader", cascade = CascadeType.ALL)
     private Set<ReadingProgress> readingProgresses = new HashSet<>();
 
     public Reader() {

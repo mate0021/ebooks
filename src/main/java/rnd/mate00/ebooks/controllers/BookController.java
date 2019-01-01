@@ -142,22 +142,26 @@ public class BookController {
         return "book/bookdetails";
     }
 
-    private BookInProgressCommand getProgressBeanForBook(Book book, Optional<ReadingProgress> readingProgress) {
-        Date started = readingProgress.map(ReadingProgress::getStart).orElse(null);
-        Date finished = readingProgress.map(ReadingProgress::getEnd).orElse(null);
-
-        return new BookInProgressCommand(book, started, finished);
-    }
-
     @RequestMapping("/books/{id}/finish")
     public String finishReading(@PathVariable String id, Model model) {
         Book book = findBookById(id);
         Reader reader = readerRepository.findById(1).get();
         readingProgressService.stopReadingBook(book, reader);
 
-        model.addAttribute(book);
+        Optional<ReadingProgress> readingProgress =
+                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+        BookInProgressCommand progressBeanForBook = getProgressBeanForBook(book, readingProgress);
+        System.out.println(progressBeanForBook);
+        model.addAttribute("book", progressBeanForBook);
 
         return "book/bookdetails";
+    }
+
+    private BookInProgressCommand getProgressBeanForBook(Book book, Optional<ReadingProgress> readingProgress) {
+        Date started = readingProgress.map(ReadingProgress::getStart).orElse(null);
+        Date finished = readingProgress.map(ReadingProgress::getEnd).orElse(null);
+
+        return new BookInProgressCommand(book, started, finished);
     }
 
     @RequestMapping("/books/{id}/buy")

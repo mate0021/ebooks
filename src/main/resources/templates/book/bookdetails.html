@@ -69,7 +69,10 @@
                                     <span th:if="${book.started == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/start'}">Start</a></span>
                                     <span th:unless="${book.started == null}" th:text="${book.started}"></span>
                                 </td>
-                                <td><a href="#" th:href="@{'/books/' + ${book.id} + '/finish'}">Finish</a></td>
+                                <td>
+                                    <span th:if="${book.finished == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/finish'}">Finish</a></span>
+                                    <span th:unless="${book.finished == null}" th:text="${book.finished}"></span>
+                                </td>
                                 <td><a href="#" th:href="@{'/books/' + ${book.id} + '/buy'}">Buy</a></td>
                             </tr>
                             <tr><td><a href="#" th:href="@{'/books/' + ${book.id} + '/delete'}">Delete</a></td></tr>

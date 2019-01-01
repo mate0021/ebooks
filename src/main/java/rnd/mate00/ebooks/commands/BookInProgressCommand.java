@@ -47,4 +47,13 @@ public class BookInProgressCommand {
     public Date getFinished() {
         return finished;
     }
+
+    @Override
+    public String toString() {
+        return "BookInProgressCommand{" +
+                "book=" + book +
+                ", started=" + started +
+                ", finished=" + finished +
+                '}';
+    }
 }
