@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import rnd.mate00.ebooks.commands.BookCommand;
+import rnd.mate00.ebooks.commands.BookInProgressCommand;
 import rnd.mate00.ebooks.commands.PurchaseCommand;
 import rnd.mate00.ebooks.commands.ThemeCommand;
 import rnd.mate00.ebooks.converters.BookCommandToBook;
 import rnd.mate00.ebooks.converters.BookToBookCommand;
 import rnd.mate00.ebooks.converters.ThemeToThemeCommand;
-import rnd.mate00.ebooks.model.Book;
-import rnd.mate00.ebooks.model.Reader;
-import rnd.mate00.ebooks.model.Shop;
-import rnd.mate00.ebooks.model.Theme;
+import rnd.mate00.ebooks.model.*;
 import rnd.mate00.ebooks.repository.BookRepository;
 import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ShopRepository;
@@ -26,7 +24,9 @@ import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 
@@ -121,7 +121,10 @@ public class BookController {
     @RequestMapping("/books/{id}/details")
     public String bookDetails(@PathVariable String id, Model model) {
         Book book = findBookById(id);
-        model.addAttribute("book", book);
+        Optional<ReadingProgress> readingProgress =
+                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+
+        model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
 
         return "book/bookdetails";
     }
@@ -132,7 +135,9 @@ public class BookController {
         Reader loggedReader = readerRepository.findById(1).get();
         readingProgressService.startReadingBook(book, loggedReader);
 
-        model.addAttribute(book);
+        Optional<ReadingProgress> readingProgress =
+                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+        model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
 
         return "book/bookdetails";
     }
@@ -143,9 +148,20 @@ public class BookController {
         Reader reader = readerRepository.findById(1).get();
         readingProgressService.stopReadingBook(book, reader);
 
-        model.addAttribute(book);
+        Optional<ReadingProgress> readingProgress =
+                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+        BookInProgressCommand progressBeanForBook = getProgressBeanForBook(book, readingProgress);
+        System.out.println(progressBeanForBook);
+        model.addAttribute("book", progressBeanForBook);
 
         return "book/bookdetails";
+    }
+
+    private BookInProgressCommand getProgressBeanForBook(Book book, Optional<ReadingProgress> readingProgress) {
+        Date started = readingProgress.map(ReadingProgress::getStart).orElse(null);
+        Date finished = readingProgress.map(ReadingProgress::getEnd).orElse(null);
+
+        return new BookInProgressCommand(book, started, finished);
     }
 
     @RequestMapping("/books/{id}/buy")
@@ -165,8 +181,6 @@ public class BookController {
     }
 
     private Book findBookById(String id) {
-        int bookId = parseInt(id);
-        Book book = bookRepository.findById(bookId).orElse(new Book());
-        return book;
+        return bookRepository.findById(parseInt(id)).orElse(new Book());
     }
 }

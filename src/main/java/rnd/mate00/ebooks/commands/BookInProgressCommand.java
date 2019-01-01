@@ -1,6 +1,7 @@
 package rnd.mate00.ebooks.commands;
 
 import rnd.mate00.ebooks.model.Book;
+import rnd.mate00.ebooks.model.Theme;
 
 import java.util.Date;
 
@@ -31,11 +32,28 @@ public class BookInProgressCommand {
         return book.getAuthor();
     }
 
+    public int getLocations() {
+        return book.getLocations();
+    }
+
+    public Theme getTheme() {
+        return book.getTheme();
+    }
+
     public Date getStarted() {
         return started;
     }
 
     public Date getFinished() {
         return finished;
+    }
+
+    @Override
+    public String toString() {
+        return "BookInProgressCommand{" +
+                "book=" + book +
+                ", started=" + started +
+                ", finished=" + finished +
+                '}';
     }
 }

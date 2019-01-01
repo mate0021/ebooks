@@ -17,6 +17,7 @@ import rnd.mate00.ebooks.repository.ThemeRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -176,5 +177,30 @@ public class ReadingProgressServiceIT {
         assertThat(booksInProgress)
                 .isNotNull()
                 .isEmpty();
+    }
+
+    @Test
+    public void shouldReturnNull_WhenBookIsNotStarted() {
+        // when
+        Optional<ReadingProgress> progress = readingProgressService.getReadingProgressFor(book, reader);
+
+        // then
+        assertThat(progress.isEmpty()).isTrue();
+    }
+
+    @Test
+    public void shouldReturnReadingProgress_WhenBookIsStarted() {
+        // given
+        readingProgressService.startReadingBook(book, reader);
+
+        // when
+        Optional<ReadingProgress> progress = readingProgressService.getReadingProgressFor(book, reader);
+
+        // then
+        assertThat(progress)
+                .isNotEmpty()
+                .get()
+                .extracting(ReadingProgress::getStart)
+                .isNotNull();
     }
 }
