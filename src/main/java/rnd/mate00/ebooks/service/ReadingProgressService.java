@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -74,7 +75,7 @@ public class ReadingProgressService {
         return startedByReader.stream().collect(toList());
     }
 
-    public ReadingProgress getReadingProgressFor(Book book, Reader reader) {
-        return readingProgressRepository.findByKey(new ReadingProgressKey(reader, book));
+    public Optional<ReadingProgress> getReadingProgressFor(Book book, Reader reader) {
+        return ofNullable(readingProgressRepository.findByKey(new ReadingProgressKey(reader, book)));
     }
 }
