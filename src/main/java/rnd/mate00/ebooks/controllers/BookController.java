@@ -135,11 +135,7 @@ public class BookController {
         Reader loggedReader = readerRepository.findById(1).get();
         readingProgressService.startReadingBook(book, loggedReader);
 
-        Optional<ReadingProgress> readingProgress =
-                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
-        model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
-
-        return "book/bookdetails";
+        return String.format("redirect:/books/%s/details", id);
     }
 
     @RequestMapping("/books/{id}/finish")
@@ -148,13 +144,7 @@ public class BookController {
         Reader reader = readerRepository.findById(1).get();
         readingProgressService.stopReadingBook(book, reader);
 
-        Optional<ReadingProgress> readingProgress =
-                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
-        BookInProgressCommand progressBeanForBook = getProgressBeanForBook(book, readingProgress);
-        System.out.println(progressBeanForBook);
-        model.addAttribute("book", progressBeanForBook);
-
-        return "book/bookdetails";
+        return String.format("redirect:/books/%s/details", id);
     }
 
     private BookInProgressCommand getProgressBeanForBook(Book book, Optional<ReadingProgress> readingProgress) {

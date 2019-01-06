@@ -21,7 +21,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * Created by mate00 on 16.09.18.
@@ -64,10 +65,8 @@ public class BookControllerTest {
     public void shouldShowDetailsOfTheBook_WhenStartReading() throws Exception {
         // when
         mockMvc.perform(get("/books/1/start"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("book"))
-//                .andExpect(model().attribute("book", testBook))
-                .andExpect(view().name("book/bookdetails"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/books/1/details"));
 
         // then
         verify(readingProgressService).startReadingBook(any(Book.class), any(Reader.class));
@@ -77,10 +76,8 @@ public class BookControllerTest {
     public void shouldShowDetailsOfTheBook_WhenFinishReading() throws Exception {
         // when
         mockMvc.perform(get("/books/1/finish"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("book"))
-//                .andExpect(model().attribute("book", testBook))
-                .andExpect(view().name("book/bookdetails"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/books/1/details"));
 
         // then
         verify(readingProgressService).stopReadingBook(any(Book.class), any(Reader.class));
