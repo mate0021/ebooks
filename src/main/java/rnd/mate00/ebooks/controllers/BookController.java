@@ -110,7 +110,7 @@ public class BookController {
         return "redirect:/books";
     }
 
-    @RequestMapping("/books/{id}/delete")
+//    @RequestMapping("/books/{id}/delete")
     public String deleteBook(@PathVariable String id) {
         int bookId = parseInt(id);
         bookRepository.deleteById(bookId);
