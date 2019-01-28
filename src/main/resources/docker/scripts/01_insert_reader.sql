@@ -1,0 +1,1 @@
+insert into reader(id, name) values (1, 'mate00');
