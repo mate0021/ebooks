@@ -20,7 +20,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder encoder;
 
     @Autowired
-    public BasicSecurityConfiguration(@Qualifier("sec.datasource") DataSource dataSource, BCryptPasswordEncoder encoder) {
+    public BasicSecurityConfiguration(@Qualifier("security.datasource") DataSource dataSource, BCryptPasswordEncoder encoder) {
         this.dataSource = dataSource;
         this.encoder = encoder;
     }
@@ -55,6 +55,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .password("{noop}pass")
 //                .roles("READER", "ADMIN");
         .jdbcAuthentication()
-                .dataSource(dataSource).passwordEncoder(encoder);
+                .dataSource(dataSource)
+                .passwordEncoder(encoder);
     }
 }

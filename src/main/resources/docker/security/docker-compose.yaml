@@ -1,0 +1,15 @@
+database:
+  image: mysql
+  container_name: ebooks_securedb
+  command: mysqld --user=root --verbose
+  volumes:
+    - ./create_user.sql:/tmp/create_user.sql
+    - ./init.sh:/tmp/init.sh
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "sec"
+    MYSQL_USER: "chief"
+    MYSQL_PASSWORD: "chief"
+    MYSQL_ROOT_PASSWORD: "root"
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
