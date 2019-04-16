@@ -6,3 +6,8 @@ insert into theme(theme) values ('IT');
 insert into theme(theme) values ('Sensacja');
 insert into theme(theme) values ('Kryminał');
 insert into theme(theme) values ('Fantasy');
+insert into theme(theme) values ('Historical fiction');
+insert into theme(theme) values ('Dziecko');
+insert into theme(theme) values ('Bieganie');
+insert into theme(theme) values ('Kolarstwo');
+insert into theme(theme) values ('Selfdev');
