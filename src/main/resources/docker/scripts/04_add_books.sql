@@ -23,7 +23,7 @@ insert into book (author, locations, title, theme_id) values ('Orson Scott Card'
 insert into book (author, locations, title, theme_id) values ('Orson Scott Card', 6167, 'Czerwony prorok', 8);
 insert into book (author, locations, title, theme_id) values ('Orson Scott Card', 7015, 'Uczeń Alvin', 8);
 insert into book (author, locations, title, theme_id) values ('Travis Macy', 3990, 'Ultranastawienie', 11);
-insert into book (author, locations, title, theme_id) values ('Orson Scott Card', 8104, 'Ultranastawienie', 8);
+insert into book (author, locations, title, theme_id) values ('Orson Scott Card', 8104, 'Alvin czeladnik', 8);
 insert into book (author, locations, title, theme_id) values ('Richard Moore', 5681, 'Tour de France. Etapy, które przeszły do historii', 12);
 insert into book (author, locations, title, theme_id) values ('Wiktor Suworow', 4367, 'Specnaz', 2);
 insert into book (author, locations, title, theme_id) values ('Wiktor Suworow', 5834, 'Lodołamacz', 2);
@@ -65,7 +65,6 @@ insert into book (author, locations, title, theme_id) values ('Gene Kim', 7998, 
 insert into book (author, locations, title, theme_id) values ('Joshua Bloch', 20392, 'Java. Efektywne programowanie. Wydanie III', 5);
 insert into book (author, locations, title, theme_id) values ('Michael Cox', 7723, 'Premier League. Historia taktyki w najlepszej piłkarskiej lidze świata', 4);
 insert into book (author, locations, title, theme_id) values ('James Warren', 9534, 'Big Data. Najlepsze praktyki budowy skalowalnych systemów obsługi danych w czasie rzeczywistym', 5);
-insert into book (author, locations, title, theme_id) values ('James Warren', , 'Unix i Linux. Przewodnik administratora', 5);
-insert into book (author, locations, title, theme_id) values ('Ziemowik Ochapski', 4795, 'Ronaldo - fenomen z Brazylii', 4);
+insert into book (author, locations, title, theme_id) values ('Evi Nemeth', 45331, 'Unix i Linux. Przewodnik administratora', 5);
+insert into book (author, locations, title, theme_id) values ('Ziemowit Ochapski', 4795, 'Ronaldo - fenomen z Brazylii', 4);
 insert into book (author, locations, title, theme_id) values ('Łukasz Grass', 3874, 'Najlepszy', 11);
-insert into book (author, locations, title, theme_id) values ('Travis Macy', 3990, 'Ultranastawienie', 11);
