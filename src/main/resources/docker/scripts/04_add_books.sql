@@ -55,3 +55,17 @@ insert into book (author, locations, title, theme_id) values ('Erik Bertrand Lar
 insert into book (author, locations, title, theme_id) values ('Ion Mihai Pacepa', 11055, 'Dezinformacja', 2);
 insert into book (author, locations, title, theme_id) values ('Steven Johnson', 3504, 'Małe wielkie odkrycia', 2);
 insert into book (author, locations, title, theme_id) values ('Marek Wałkuski', 5440, 'Wałkowanie Ameryki', 1);
+insert into book (author, locations, title, theme_id) values ('Andrew Tanenbaum', 36374, 'Systemy operacyjne. Wydanie IV', 5);
+insert into book (author, locations, title, theme_id) values ('Steve Scott', 1704, 'Piętrzenie nawyków. 97 małych zmian, które odmienią Twoje życie', 13);
+insert into book (author, locations, title, theme_id) values ('Brian Tracy', 4470, 'Nie tłumacz się, działaj! Odkryj moc samodyscypliny', 13);
+insert into book (author, locations, title, theme_id) values ('Bryan Basham', 0, 'Head First: Servlets JSP', 5);
+insert into book (author, locations, title, theme_id) values ('Eric Freeman', 0, 'Head First: Wzorce projektowe', 5);
+insert into book (author, locations, title, theme_id) values ('Scott Galloway', 5046, 'Wielka czwórka. Ukryte DNA: Amazon, Apple, Facebook i Google', 5);
+insert into book (author, locations, title, theme_id) values ('Gene Kim', 7998, 'Projekt Feniks. Powieść o IT, modelu DevOps i o tym, jak pomóc firmie w odniesieniu sukcesu', 5);
+insert into book (author, locations, title, theme_id) values ('Joshua Bloch', 20392, 'Java. Efektywne programowanie. Wydanie III', 5);
+insert into book (author, locations, title, theme_id) values ('Michael Cox', 7723, 'Premier League. Historia taktyki w najlepszej piłkarskiej lidze świata', 4);
+insert into book (author, locations, title, theme_id) values ('James Warren', 9534, 'Big Data. Najlepsze praktyki budowy skalowalnych systemów obsługi danych w czasie rzeczywistym', 5);
+insert into book (author, locations, title, theme_id) values ('James Warren', , 'Unix i Linux. Przewodnik administratora', 5);
+insert into book (author, locations, title, theme_id) values ('Ziemowik Ochapski', 4795, 'Ronaldo - fenomen z Brazylii', 4);
+insert into book (author, locations, title, theme_id) values ('Łukasz Grass', 3874, 'Najlepszy', 11);
+insert into book (author, locations, title, theme_id) values ('Travis Macy', 3990, 'Ultranastawienie', 11);
