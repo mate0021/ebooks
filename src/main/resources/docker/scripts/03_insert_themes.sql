@@ -11,3 +11,4 @@ insert into theme(theme) values ('Dziecko');
 insert into theme(theme) values ('Bieganie');
 insert into theme(theme) values ('Kolarstwo');
 insert into theme(theme) values ('Selfdev');
+insert into theme(theme) values ('Horror');

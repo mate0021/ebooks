@@ -37,7 +37,7 @@ insert into book (author, locations, title, theme_id) values ('Jarosław Grzędo
 insert into book (author, locations, title, theme_id) values ('Pete Goodliffe', 6418, 'Jak stać się lepszym programistą', 5);
 insert into book (author, locations, title, theme_id) values ('Federico Bianuzzi', 13966, 'Wielkie umysły programowania. Jak myślą i pracują twórcy najważniejszych języków', 5);
 insert into book (author, locations, title, theme_id) values ('Douglas Boyd', 6975, 'Ekspansja Kremla', 2);
-insert into book (author, locations, title, theme_id) values ('Frank Herbert', 11414, 'Duna', 3);
+insert into book (author, locations, title, theme_id) values ('Frank Herbert', 11414, 'Diuna', 3);
 insert into book (author, locations, title, theme_id) values ('Jo Nesbo', 6758, 'Człowiek nietoperz', 7);
 insert into book (author, locations, title, theme_id) values ('Neil Fiore', 3689, 'Nawyk samodyscypliny. Zaprogramuj wewnętrznego stróża', 13);
 insert into book (author, locations, title, theme_id) values ('Greg Jenner', 5821, 'Milion lat w jeden dzień', 2);
@@ -68,3 +68,9 @@ insert into book (author, locations, title, theme_id) values ('James Warren', 95
 insert into book (author, locations, title, theme_id) values ('Evi Nemeth', 45331, 'Unix i Linux. Przewodnik administratora', 5);
 insert into book (author, locations, title, theme_id) values ('Ziemowit Ochapski', 4795, 'Ronaldo - fenomen z Brazylii', 4);
 insert into book (author, locations, title, theme_id) values ('Łukasz Grass', 3874, 'Najlepszy', 11);
+insert into book (author, locations, title, theme_id) values ('Charles Duhigg', 7287, 'Mądrzej, szybciej, lepiej', 13);
+insert into book (author, locations, title, theme_id) values ('Neil Fiore', 2759, 'Nawyk samodyscypliny w pracy', 13);
+insert into book (author, locations, title, theme_id) values ('Stephen King', 21616, 'To', 14);
+insert into book (author, locations, title, theme_id) values ('Judyta Watoła', 4085, 'Słodziutki', 2);
+insert into book (author, locations, title, theme_id) values ('Kasper van der Maulen', 3014, 'Mindlift: mental fitness for the modern mind', 13);
+insert into book (author, locations, title, theme_id) values ('Gynvael Coldwind', 12552, 'Zrozumieć programowanie', 5);
