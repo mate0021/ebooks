@@ -74,3 +74,4 @@ insert into book (author, locations, title, theme_id) values ('Stephen King', 21
 insert into book (author, locations, title, theme_id) values ('Judyta Watoła', 4085, 'Słodziutki', 2);
 insert into book (author, locations, title, theme_id) values ('Kasper van der Maulen', 3014, 'Mindlift: mental fitness for the modern mind', 13);
 insert into book (author, locations, title, theme_id) values ('Gynvael Coldwind', 12552, 'Zrozumieć programowanie', 5);
+insert into book (author, locations, title, theme_id) values ('Amy McCready', 4790, 'Dziecko, czy muszę ci to jeszcze raz powtarzać?', 10);

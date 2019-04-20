@@ -59,3 +59,4 @@ insert into reading_progress (reading_start, reading_end, key_book, key_reader) 
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2018/08/12', '2018/12/12', 73, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2018/03/05', '2018/03/12', 74, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2018/03/01', '2018/03/05', 75, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/03/01', null, 77, 1);
