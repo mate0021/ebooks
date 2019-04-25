@@ -8,21 +8,24 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import rnd.mate00.ebooks.commands.PurchaseCommand;
 import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
+import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
 import rnd.mate00.ebooks.repository.BookRepository;
 import rnd.mate00.ebooks.repository.ReaderRepository;
+import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import java.util.Optional;
 
+import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by mate00 on 16.09.18.
@@ -42,6 +45,9 @@ public class BookControllerTest {
     @Mock
     private ReaderRepository readerRepository;
 
+    @Mock
+    private ShopRepository shopRepository;
+
     private MockMvc mockMvc;
 
     private Book testBook = new Book("title", "author", 5000, new Theme());
@@ -51,6 +57,7 @@ public class BookControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(subject).build();
         when(bookRepository.findById(1)).thenReturn(Optional.of(testBook));
         when(readerRepository.findById(1)).thenReturn(Optional.of(new Reader()));
+        when(shopRepository.findAll()).thenReturn(asList(new Shop("shoporama", "www.shoporama.com")));
     }
 
     @Test
@@ -81,5 +88,21 @@ public class BookControllerTest {
 
         // then
         verify(readingProgressService).stopReadingBook(any(Book.class), any(Reader.class));
+    }
+
+    @Test
+    public void shouldDisplayPurchaseForm() throws Exception {
+        // given
+        PurchaseCommand expectedCommand = new PurchaseCommand();
+        expectedCommand.setBook(testBook);
+        expectedCommand.setReader(new Reader());
+
+        // when
+        mockMvc.perform(get("/books/1/buy"))
+                .andExpect((status().isOk()))
+                .andExpect(view().name("shopping/purchasedetails"))
+                .andExpect(model().attributeExists("purchase", "shopList"))
+                .andExpect(model().attribute("purchase", expectedCommand))
+                .andExpect(model().attribute("shopList", asList(new Shop("shoporama", "www.shoporama.com"))));
     }
 }

@@ -53,12 +53,18 @@
                                     </td>
                                     <td>Price:</td>
                                     <td>
+                                        <div th:if="${#fields.hasErrors('price')}" class="alert alert-danger">
+                                            <p>Too low price</p>
+                                        </div>
                                         <input type="number" class="form-control" th:field="*{price}"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Purchase date (YYYY/MM/DD)</td>
                                     <td>
+                                        <div th:if="${#fields.hasErrors('buyDate')}" class="alert alert-danger">
+                                            <p>Empty date</p>
+                                        </div>
                                         <input type="text" th:field="*{buyDate}"/>
                                     </td>
                                     <td>
