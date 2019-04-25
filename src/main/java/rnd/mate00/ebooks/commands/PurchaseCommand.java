@@ -4,6 +4,8 @@ import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Shop;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
@@ -14,9 +16,16 @@ import java.util.Objects;
 public class PurchaseCommand {
 
     private Book book;
+
     private Reader reader;
+
+    @Min(0)
+    @NotNull
     private BigDecimal price;
+
+    @NotNull
     private Date buyDate;
+
     private Shop shop;
 
     public Book getBook() {
