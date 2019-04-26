@@ -198,5 +198,11 @@ public class BookControllerTest {
                 .andExpect(view().name("book/bookform"));
     }
 
-
+    @Test
+    public void shouldReturnBookDetailsViewWithReadingProgress() throws Exception {
+        mockMvc.perform(get("/books/1/details"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("book"))
+                .andExpect(view().name("book/bookdetails"));
+    }
 }
