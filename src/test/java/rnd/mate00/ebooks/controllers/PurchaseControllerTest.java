@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import rnd.mate00.ebooks.repository.BookRepository;
@@ -75,6 +74,6 @@ public class PurchaseControllerTest {
         params.add("price", "8.99");
         params.add("shop.id", null);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/buyBook").params(params)).andExpect(status().is3xxRedirection());
+        mockMvc.perform(post("/buyBook").params(params)).andExpect(status().is3xxRedirection());
     }
 }
