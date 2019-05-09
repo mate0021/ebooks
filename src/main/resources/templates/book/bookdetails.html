@@ -64,7 +64,7 @@
                                 <td th:text="${book.title}">book title</td>
                                 <td th:text="${book.author}">book author</td>
                                 <td th:text="${book.locations}">3456</td>
-                                <td th:text="${book.theme}">criminal</td>
+                                <td th:text="${book.theme.theme}">criminal</td>
                                 <td>
                                     <span th:if="${book.started == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/start'}">Start</a></span>
                                     <span th:unless="${book.started == null}" th:text="${book.started}"></span>

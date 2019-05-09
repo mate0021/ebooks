@@ -1,10 +1,10 @@
 package rnd.mate00.ebooks.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import rnd.mate00.ebooks.model.*;
@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 /**
  * Created by mate00 on 12.02.18.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureTestDatabase
 public class ShoppingServiceIT {
 
     @Autowired
