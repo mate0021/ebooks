@@ -34,9 +34,6 @@ public class DatabaseConfiguration {
         dataSource.setUsername(user);
         dataSource.setPassword(pass);
 
-        System.out.println(" !@# " + driver);
-        System.out.println(" !@# " + user);
-
         return dataSource;
     }
 
