@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ReadingProgressController.class)
+@WebMvcTest(value = ReadingProgressController.class, secure = false)
 public class ReadingProgressControllerTest {
 
     @Autowired

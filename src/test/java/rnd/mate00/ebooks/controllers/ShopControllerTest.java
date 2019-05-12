@@ -10,15 +10,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import rnd.mate00.ebooks.converters.ShopCommandToShop;
 import rnd.mate00.ebooks.repository.ShopRepository;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ShopController.class)
+@WebMvcTest(value = ShopController.class, secure = false)
 public class ShopControllerTest {
 
     @Autowired
