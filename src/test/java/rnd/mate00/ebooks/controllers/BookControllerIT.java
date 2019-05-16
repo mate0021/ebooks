@@ -41,15 +41,9 @@ public class BookControllerIT {
     @MockBean
     private ReadingProgressService readingProgressService;
 
-//    @MockBean(name = "security.datasource")
-//    private DataSource dataSource;
-
-//    @MockBean
-//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Test
-    @WithMockUser(value = "spring")
     public void shouldReturnUnauthorizedStatus() throws Exception {
-        mockMvc.perform(get("/books")).andExpect(status().is3xxRedirection());
+        mockMvc.perform(get("/books")).andExpect(status().is4xxClientError());
     }
 }
