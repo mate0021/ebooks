@@ -16,6 +16,7 @@ import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -45,5 +46,15 @@ public class BookControllerIT {
     @Test
     public void shouldReturnUnauthorizedStatus() throws Exception {
         mockMvc.perform(get("/books")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void shouldNotAllowBookUpdate() throws Exception {
+        mockMvc.perform(get("/books/1/update")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void shouldNotAllowFormHandling() throws Exception {
+        mockMvc.perform(post("/bookForm")).andExpect(status().isOk());
     }
 }
