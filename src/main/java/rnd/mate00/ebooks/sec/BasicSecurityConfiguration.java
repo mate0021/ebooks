@@ -33,15 +33,16 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/").permitAll()
-                .and()
+//                .authorizeRequests().antMatchers("/").permitAll()
+//                .and()
                 .authorizeRequests().antMatchers("/h2-console/**").permitAll()
-                .anyRequest()
-                .authenticated()
                 .and()
-                .formLogin()
+                .authorizeRequests().antMatchers("/themes").permitAll()
                 .and()
-                .httpBasic()
+                .authorizeRequests().antMatchers("/shops").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().and().httpBasic()
                 .and()
                 .csrf().disable()
                 .headers().frameOptions().disable();
