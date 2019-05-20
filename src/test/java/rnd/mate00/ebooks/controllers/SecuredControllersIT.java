@@ -68,4 +68,25 @@ public class SecuredControllersIT {
     public void unauthUserCannotAddShop() throws Exception {
         mockMvc.perform(get("/shops/add")).andExpect(status().is4xxClientError());
     }
+
+    @Test
+    public void unauthUserCannotSeeBooksInProgress() throws Exception {
+        mockMvc.perform(get("/readings")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void unauthUserCannotBuyABook() throws Exception {
+        mockMvc.perform(get("/books/1/buy")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void unauthUserCannotStartReadingABook() throws Exception {
+        mockMvc.perform(get("/books/1/start")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void unauthUserCannotFinishReadingABook() throws Exception {
+        mockMvc.perform(get("/books/1/finish")).andExpect(status().is4xxClientError());
+    }
+
 }
