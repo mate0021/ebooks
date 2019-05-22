@@ -7,11 +7,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import rnd.mate00.ebooks.repository.ShopRepository;
-import rnd.mate00.ebooks.repository.ThemeRepository;
+import rnd.mate00.ebooks.repository.*;
 import rnd.mate00.ebooks.sec.BasicSecurityConfiguration;
+import rnd.mate00.ebooks.service.ReadingProgressService;
+import rnd.mate00.ebooks.service.ShoppingService;
 
 import javax.sql.DataSource;
 
@@ -20,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = {ThemeController.class, ShopController.class})
+@WebMvcTest(controllers = {ThemeController.class, ShopController.class, BookController.class, ReadingProgressController.class, PurchaseController.class})
 @Import(BasicSecurityConfiguration.class)
 public class SecuredControllersIT {
 
@@ -32,6 +34,21 @@ public class SecuredControllersIT {
 
     @MockBean
     ShopRepository shopRepository;
+
+    @MockBean
+    BookRepository bookRepository;
+
+    @MockBean
+    ReadingProgressRepository readingProgressRepository;
+
+    @MockBean
+    ReadingProgressService readingProgressService;
+
+    @MockBean
+    ReaderRepository readerRepository;
+
+    @MockBean
+    ShoppingService shoppingService;
 
     @MockBean(name = "security.datasource")
     DataSource dataSource;
@@ -87,6 +104,60 @@ public class SecuredControllersIT {
     @Test
     public void unauthUserCannotFinishReadingABook() throws Exception {
         mockMvc.perform(get("/books/1/finish")).andExpect(status().is4xxClientError());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanViewBooks() throws Exception {
+        mockMvc.perform(get("/books")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanAddShop() throws Exception {
+        mockMvc.perform(get("/shops/add")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanUpdateShop() throws Exception {
+        mockMvc.perform(post("/shopForm")).andExpect(status().is3xxRedirection());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanAddTheme() throws Exception {
+        mockMvc.perform(get("/themes/add")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanUpdateTheme() throws Exception {
+        mockMvc.perform(post("/themeForm")).andExpect(status().is3xxRedirection());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanSeeBooksInProgress() throws Exception {
+        mockMvc.perform(get("/readings")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanBuyABook() throws Exception {
+        mockMvc.perform(get("/books/1/buy")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCanStartReadingABook() throws Exception {
+        mockMvc.perform(get("/books/1/start")).andExpect(status().isOk());
+    }
+
+    @WithMockUser
+    @Test
+    public void authUserCannotFinishReadingABook() throws Exception {
+        mockMvc.perform(get("/books/1/finish")).andExpect(status().isOk());
     }
 
 }
