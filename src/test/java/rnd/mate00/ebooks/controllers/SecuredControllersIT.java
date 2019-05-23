@@ -1,5 +1,6 @@
 package rnd.mate00.ebooks.controllers;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +11,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.*;
 import rnd.mate00.ebooks.sec.BasicSecurityConfiguration;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 import rnd.mate00.ebooks.service.ShoppingService;
 
 import javax.sql.DataSource;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -55,6 +61,11 @@ public class SecuredControllersIT {
 
     @MockBean
     BCryptPasswordEncoder encoder;
+
+    @Before
+    public void setUp() {
+        when(readerRepository.findById(eq(1))).thenReturn(Optional.of(new Reader("John Read")));
+    }
 
     @Test
     public void unauthUserCanSeeThemes() throws Exception {
@@ -151,13 +162,17 @@ public class SecuredControllersIT {
     @WithMockUser
     @Test
     public void authUserCanStartReadingABook() throws Exception {
-        mockMvc.perform(get("/books/1/start")).andExpect(status().isOk());
+        mockMvc.perform(get("/books/1/start"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/books/1/details"));
     }
 
     @WithMockUser
     @Test
     public void authUserCannotFinishReadingABook() throws Exception {
-        mockMvc.perform(get("/books/1/finish")).andExpect(status().isOk());
+        mockMvc.perform(get("/books/1/finish"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/books/1/details"));
     }
 
 }
