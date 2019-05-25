@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ThemeController.class)
+@WebMvcTest(value = ThemeController.class, secure = false)
 public class ThemeControllerTest {
 
     @Autowired
