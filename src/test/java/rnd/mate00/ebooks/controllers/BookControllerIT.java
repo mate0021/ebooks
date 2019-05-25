@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import rnd.mate00.ebooks.config.SecurityTestConfig;
@@ -22,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = BookController.class)
 @Import(SecurityTestConfig.class)
+@ActiveProfiles("test")
 public class BookControllerIT {
 
     @Autowired
@@ -54,7 +56,7 @@ public class BookControllerIT {
     }
 
     @Test
-    public void shouldNotAllowFormHandling() throws Exception {
+    public void shouldAllowFormHandling() throws Exception {
         mockMvc.perform(post("/bookForm")).andExpect(status().isOk());
     }
 }
