@@ -1,10 +1,15 @@
 package rnd.mate00.ebooks.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import rnd.mate00.ebooks.commands.BookCommand;
 import rnd.mate00.ebooks.commands.BookInProgressCommand;
 import rnd.mate00.ebooks.commands.PurchaseCommand;
@@ -117,6 +122,8 @@ public class BookController {
 
     @RequestMapping("/books/{id}/details")
     public String bookDetails(@PathVariable String id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(" auth " + auth);
         Book book = findBookById(id);
         Optional<ReadingProgress> readingProgress =
                 readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
