@@ -25,6 +25,7 @@ import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -121,12 +122,14 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/details")
-    public String bookDetails(@PathVariable String id, Model model) {
+    public String bookDetails(@PathVariable String id, Model model, Principal principal) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(" auth " + auth);
+//        User principal = (User) auth.getPrincipal();
+        System.out.println(" >> our prince " + principal.getName());
+        Reader reader = readerRepository.findByName("John Read").get();
         Book book = findBookById(id);
         Optional<ReadingProgress> readingProgress =
-                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+                readingProgressService.getReadingProgressFor(book, reader);
 
         model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
 
