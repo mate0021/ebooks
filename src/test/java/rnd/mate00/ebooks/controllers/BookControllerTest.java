@@ -25,6 +25,7 @@ import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
+import java.security.Principal;
 import java.util.Optional;
 
 import static java.util.Arrays.asList;
@@ -68,6 +69,9 @@ public class BookControllerTest {
     @Mock
     private BookCommandToBook bookCommandToBook;
 
+    @Mock
+    private Principal principal;
+
     private MockMvc mockMvc;
 
     private Book testBook = new Book("title", "author", 5000, new Theme());
@@ -76,8 +80,9 @@ public class BookControllerTest {
     public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(subject).build();
         when(bookRepository.findById(1)).thenReturn(Optional.of(testBook));
-        when(readerRepository.findById(1)).thenReturn(Optional.of(new Reader()));
+        when(readerRepository.findByName("mate00")).thenReturn(Optional.of(new Reader()));
         when(shopRepository.findAll()).thenReturn(asList(new Shop("shoporama", "www.shoporama.com")));
+        when(principal.getName()).thenReturn("mate00");
     }
 
     @Test
@@ -91,7 +96,7 @@ public class BookControllerTest {
     @Test
     public void shouldShowDetailsOfTheBook_WhenStartReading() throws Exception {
         // when
-        mockMvc.perform(get("/books/1/start"))
+        mockMvc.perform(get("/books/1/start").principal(principal))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/books/1/details"));
 
@@ -102,7 +107,7 @@ public class BookControllerTest {
     @Test
     public void shouldShowDetailsOfTheBook_WhenFinishReading() throws Exception {
         // when
-        mockMvc.perform(get("/books/1/finish"))
+        mockMvc.perform(get("/books/1/finish").principal(principal))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/books/1/details"));
 
@@ -118,7 +123,7 @@ public class BookControllerTest {
         expectedCommand.setReader(new Reader());
 
         // when
-        mockMvc.perform(get("/books/1/buy"))
+        mockMvc.perform(get("/books/1/buy").principal(principal))
                 .andExpect(status().isOk())
                 .andExpect(view().name("shopping/purchasedetails"))
                 .andExpect(model().attributeExists("purchase", "shopList"))
@@ -200,7 +205,7 @@ public class BookControllerTest {
 
     @Test
     public void shouldReturnBookDetailsViewWithReadingProgress() throws Exception {
-        mockMvc.perform(get("/books/1/details"))
+        mockMvc.perform(get("/books/1/details").principal(principal))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("book"))
                 .andExpect(view().name("book/bookdetails"));

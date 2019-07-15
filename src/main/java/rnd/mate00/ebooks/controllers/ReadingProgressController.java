@@ -1,6 +1,7 @@
 package rnd.mate00.ebooks.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import rnd.mate00.ebooks.model.ReadingProgress;
 import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
+import java.security.Principal;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -32,8 +34,10 @@ public class ReadingProgressController {
 
 
     @RequestMapping("/readings")
-    public String showBooksInProgress(Model model) {
-        Reader reader = readerRepository.findById(1).get();
+    public String showBooksInProgress(Model model, Principal principal) {
+        Reader reader = readerRepository.
+                findByName(principal.getName()).
+                orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
         List<ReadingProgress> booksInProgress = readingProgressService.getBooksInProgress(reader);
 
         List<BookInProgressCommand> booksInProgressBackingBean = booksInProgress.

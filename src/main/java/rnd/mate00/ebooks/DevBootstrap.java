@@ -80,7 +80,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private void addReaders() {
-        Reader reader = new Reader("John Read");
+        Reader reader = new Reader("mate00");
 
         readerRepository.save(reader);
 
