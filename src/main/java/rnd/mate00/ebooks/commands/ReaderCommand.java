@@ -1,15 +1,23 @@
 package rnd.mate00.ebooks.commands;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class ReaderCommand {
 
     private int id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String password;
 
+    @NotBlank
     private String repeatedPassword;
 
+    @NotBlank
+    @Email
     private String email;
 
     public ReaderCommand() {

@@ -32,24 +32,36 @@
                                 <div class="col-md-3 form-group">
                                     <label>Reader name:</label>
                                     <input type="text" class="form-control" th:field="*{name}"/>
+                                    <div th:if="${#fields.hasErrors('name')}" class="alert alert-danger">
+                                        <p>Name cannot be blank</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Password:</label>
                                     <input type="password" class="form-control" th:field="*{password}"/>
+                                    <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger">
+                                        <p>Password cannot be blank</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Repeat password:</label>
                                     <input type="password" class="form-control" th:field="*{repeatedPassword}"/>
+                                    <div th:if="${#fields.hasErrors('repeatedPassword')}" class="alert alert-danger">
+                                        <p>Password cannot be blank</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Email:</label>
                                     <input type="email" class="form-control" th:field="*{email}"/>
+                                    <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger">
+                                        <p>Wrong email</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
