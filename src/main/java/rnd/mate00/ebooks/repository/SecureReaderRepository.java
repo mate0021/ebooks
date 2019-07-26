@@ -1,7 +1,7 @@
 package rnd.mate00.ebooks.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.core.userdetails.User;
+import rnd.mate00.ebooks.sec.SecureReader;
 
-public interface SecureReaderRepository extends CrudRepository<User, Integer> {
+public interface SecureReaderRepository extends CrudRepository<SecureReader, Integer> {
 }

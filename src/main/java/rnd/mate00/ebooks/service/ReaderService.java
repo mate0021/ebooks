@@ -1,15 +1,18 @@
 package rnd.mate00.ebooks.service;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import rnd.mate00.ebooks.commands.ReaderCommand;
+import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.ReaderRepository;
+import rnd.mate00.ebooks.repository.RoleRepository;
 import rnd.mate00.ebooks.repository.SecureReaderRepository;
+import rnd.mate00.ebooks.sec.Role;
+import rnd.mate00.ebooks.sec.SecureReader;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class ReaderService {
@@ -18,14 +21,29 @@ public class ReaderService {
 
     private SecureReaderRepository secureReaderRepository;
 
+    private RoleRepository roleRepository;
+
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public ReaderService(ReaderRepository readerRepository, SecureReaderRepository secureReaderRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.readerRepository = readerRepository;
+        this.secureReaderRepository = secureReaderRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public void saveReader(ReaderCommand readerCommand) {
         String username = readerCommand.getName();
-        List<GrantedAuthority> authorities = Collections.emptyList();
         String password = passwordEncoder.encode(readerCommand.getPassword());
 
-        User user = new User(username, password, authorities);
-        secureReaderRepository.save(user);
+        Set<Role> roles = new HashSet<>();
+        Role defaultRole = roleRepository.findByRoleName("reader").orElseThrow();
+        roles.add(defaultRole);
+        SecureReader secureReader = new SecureReader(username, password, true, roles);
+        secureReaderRepository.save(secureReader);
+
+        Reader reader = new Reader(username);
+        readerRepository.save(reader);
     }
 }

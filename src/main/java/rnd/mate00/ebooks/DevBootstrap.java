@@ -9,10 +9,12 @@ import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
-import rnd.mate00.ebooks.repository.BookRepository;
-import rnd.mate00.ebooks.repository.ReaderRepository;
-import rnd.mate00.ebooks.repository.ShopRepository;
-import rnd.mate00.ebooks.repository.ThemeRepository;
+import rnd.mate00.ebooks.repository.*;
+import rnd.mate00.ebooks.sec.Role;
+import rnd.mate00.ebooks.sec.SecureReader;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by mate00 on 05.03.18.
@@ -33,12 +35,20 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private ReaderRepository readerRepository;
 
+    @Autowired
+    private SecureReaderRepository secureReaderRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         addShops();
         addThemes();
         addBooks();
         addReaders();
+        addRoles();
+        addSecurityUsers();
     }
 
     private void addShops() {
@@ -85,5 +95,33 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         readerRepository.save(reader);
 
         System.out.println(String.format("Added %s reader(s).", readerRepository.count()));
+    }
+
+    private void addRoles() {
+        Role roleAdmin = new Role(1, "admin");
+        Role roleReader = new Role(2, "reader");
+
+        roleRepository.save(roleAdmin);
+        roleRepository.save(roleReader);
+
+        System.out.println(String.format("Added %s system role(s)", roleRepository.count()));
+    }
+
+    private void addSecurityUsers() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findById(1).get());
+        roles.add(roleRepository.findById(2).get());
+
+        SecureReader reader =
+                new SecureReader(
+                        1,
+                        "mate00",
+                        "$2a$10$sGx1EawJhzFIaYJHLDSs5ewQqzCO6M6jGAZnMcw6RUAsuAwe2CUMK",
+                        true,
+                        roles);
+
+        secureReaderRepository.save(reader);
+
+        System.out.println(String.format("Added %s user(s).", secureReaderRepository.count()));
     }
 }

@@ -56,6 +56,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .password("{noop}pass")
 //                .roles("READER", "ADMIN");
         .jdbcAuthentication()
+                .authoritiesByUsernameQuery("select username, role_name from users, users_roles, role where users.id = users_id and roles_id = role.id and username = ?")
                 .dataSource(dataSource)
                 .passwordEncoder(encoder);
     }

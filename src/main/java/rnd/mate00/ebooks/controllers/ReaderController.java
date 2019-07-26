@@ -37,9 +37,7 @@ public class ReaderController {
     public String onUpdateReader(@Valid @ModelAttribute(name = "reader") ReaderCommand readerBean,
                                  BindingResult bindingResult,
                                  Model model) {
-        System.out.println(readerBean);
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getFieldErrors());
             model.addAttribute("reader", readerBean);
 
             return "reader/readerform";
