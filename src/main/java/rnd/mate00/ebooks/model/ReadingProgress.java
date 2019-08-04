@@ -14,8 +14,8 @@ import static java.util.Date.from;
  */
 @Entity(name = "reading_progress")
 @AssociationOverrides({
-        @AssociationOverride(name = "key.book", joinColumns = @JoinColumn(name = "key.book")),
-        @AssociationOverride(name = "key.reader", joinColumns = @JoinColumn(name = "key.reader"))
+        @AssociationOverride(name = "key.book", joinColumns = @JoinColumn(name = "key_book")),
+        @AssociationOverride(name = "key.reader", joinColumns = @JoinColumn(name = "key_reader"))
 })
 public class ReadingProgress implements Serializable {
 

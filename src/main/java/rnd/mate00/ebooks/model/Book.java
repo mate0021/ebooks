@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by mate00 on 21.01.18.
  */
-@Entity
+@Entity(name = "book")
 public class Book implements Serializable {
 
     @Id

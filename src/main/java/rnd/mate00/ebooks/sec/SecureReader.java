@@ -20,6 +20,7 @@ public class SecureReader {
     private boolean enabled;
 
     @ManyToMany
+    @JoinTable(name = "users_roles")
     private Set<Role> roles = new HashSet<>();
 
     public SecureReader() {

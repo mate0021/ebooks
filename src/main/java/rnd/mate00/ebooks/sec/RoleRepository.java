@@ -1,7 +1,6 @@
-package rnd.mate00.ebooks.repository;
+package rnd.mate00.ebooks.sec;
 
 import org.springframework.data.repository.CrudRepository;
-import rnd.mate00.ebooks.sec.Role;
 
 import java.util.Optional;
 

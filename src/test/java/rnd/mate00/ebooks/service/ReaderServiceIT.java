@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import rnd.mate00.ebooks.commands.ReaderCommand;
 import rnd.mate00.ebooks.repository.ReaderRepository;
-import rnd.mate00.ebooks.repository.SecureReaderRepository;
+import rnd.mate00.ebooks.sec.SecureReaderRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import rnd.mate00.ebooks.commands.ReaderCommand;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.ReaderRepository;
-import rnd.mate00.ebooks.repository.RoleRepository;
-import rnd.mate00.ebooks.repository.SecureReaderRepository;
 import rnd.mate00.ebooks.sec.Role;
+import rnd.mate00.ebooks.sec.RoleRepository;
 import rnd.mate00.ebooks.sec.SecureReader;
+import rnd.mate00.ebooks.sec.SecureReaderRepository;
 
 import java.util.HashSet;
 import java.util.Set;

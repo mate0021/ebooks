@@ -11,9 +11,9 @@ import java.util.Objects;
  */
 @Entity(name = "shopping")
 @AssociationOverrides({
-        @AssociationOverride(name = "shoppingKey.reader", joinColumns = @JoinColumn(name = "key.reader")),
-        @AssociationOverride(name = "shoppingKey.book", joinColumns = @JoinColumn(name = "key.book")),
-        @AssociationOverride(name = "shoppingKey.shop", joinColumns = @JoinColumn(name = "key.shop"))
+        @AssociationOverride(name = "shoppingKey.reader", joinColumns = @JoinColumn(name = "key_reader")),
+        @AssociationOverride(name = "shoppingKey.book", joinColumns = @JoinColumn(name = "key_book")),
+        @AssociationOverride(name = "shoppingKey.shop", joinColumns = @JoinColumn(name = "key_shop"))
 })
 public class Shopping implements Serializable {
 

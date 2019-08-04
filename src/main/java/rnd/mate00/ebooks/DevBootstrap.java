@@ -9,9 +9,14 @@ import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.model.Shop;
 import rnd.mate00.ebooks.model.Theme;
-import rnd.mate00.ebooks.repository.*;
+import rnd.mate00.ebooks.repository.BookRepository;
+import rnd.mate00.ebooks.repository.ReaderRepository;
+import rnd.mate00.ebooks.repository.ShopRepository;
+import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.sec.Role;
+import rnd.mate00.ebooks.sec.RoleRepository;
 import rnd.mate00.ebooks.sec.SecureReader;
+import rnd.mate00.ebooks.sec.SecureReaderRepository;
 
 import java.util.HashSet;
 import java.util.Set;
