@@ -43,6 +43,24 @@ CREATE TABLE shopping (
   PRIMARY KEY (key_book,key_reader,key_shop)
 );
 
+create table role (
+    id int(10) not null auto_increment,
+    role_name varchar(100) not null,
+    primary key (id)
+);
+
+create table users (
+    id int(10) not null auto_increment,
+    username varchar(100) not null,
+    password varchar(100) not null,
+    enabled tinyint(1) not null,
+    primary key (id)
+);
+
+create table users_roles (
+    users_id int(10) not null,
+    roles_id int(10) not null
+);
 --drop table if exists users;
 --
 --create table user(id bigint auto_increment, username varchar(255), password varchar(255), enabled boolean);
