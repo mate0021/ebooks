@@ -1,3 +1,4 @@
+drop table if exists shop;
 CREATE TABLE shop (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(255)  DEFAULT NULL,
@@ -5,18 +6,21 @@ CREATE TABLE shop (
   PRIMARY KEY (id)
 );
 
+drop table if exists theme;
 CREATE TABLE theme (
   id int(11) NOT NULL AUTO_INCREMENT,
   theme varchar(255)  DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
+drop table if exists reader;
 CREATE TABLE reader (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(255)  DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
+drop table if exists book;
 CREATE TABLE book (
   id int(11) NOT NULL AUTO_INCREMENT,
   author varchar(255) DEFAULT NULL,
@@ -26,6 +30,7 @@ CREATE TABLE book (
   PRIMARY KEY (id)
 );
 
+drop table if exists reading_progress;
 CREATE TABLE reading_progress (
   reading_end date DEFAULT NULL,
   reading_start date NOT NULL,
@@ -34,6 +39,7 @@ CREATE TABLE reading_progress (
   PRIMARY KEY (key_book,key_reader)
 );
 
+drop table if exists shopping;
 CREATE TABLE shopping (
   buy_date date DEFAULT NULL,
   price decimal(19,2) DEFAULT NULL,
@@ -43,12 +49,14 @@ CREATE TABLE shopping (
   PRIMARY KEY (key_book,key_reader,key_shop)
 );
 
+drop table if exists role;
 create table role (
     id int(10) not null auto_increment,
     role_name varchar(100) not null,
     primary key (id)
 );
 
+drop table if exists users;
 create table users (
     id int(10) not null auto_increment,
     username varchar(100) not null,
@@ -57,6 +65,7 @@ create table users (
     primary key (id)
 );
 
+drop table if exists users_roles;
 create table users_roles (
     users_id int(10) not null,
     roles_id int(10) not null
