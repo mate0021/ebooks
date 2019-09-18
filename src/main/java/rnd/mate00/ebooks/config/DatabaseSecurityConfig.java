@@ -69,6 +69,7 @@ public class DatabaseSecurityConfig {
     private Map<String, String> getHibernateProperties() {
         Map<String, String> properties = new HashMap<>();
         properties.put("hibernate.id.new_generator_mappings", "false");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
         return properties;
     }

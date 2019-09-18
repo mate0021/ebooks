@@ -15,6 +15,8 @@ import rnd.mate00.ebooks.model.Book;
 import rnd.mate00.ebooks.repository.BookRepository;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
@@ -57,8 +59,18 @@ public class DatabaseConfiguration {
                 .dataSource(dataSource())
                 .packages(Book.class, BookRepository.class)
                 .persistenceUnit("booksPU")
+                .properties(getHibernateProperties())
                 .build();
     }
+
+    private Map<String, String> getHibernateProperties() {
+        Map<String, String> properties = new HashMap<>();
+        properties.put("hibernate.id.new_generator_mappings", "false");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+
+        return properties;
+    }
+
 
     @Bean
     @Primary
