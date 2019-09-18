@@ -66,7 +66,7 @@ public class DatabaseConfiguration {
     private Map<String, String> getHibernateProperties() {
         Map<String, String> properties = new HashMap<>();
         properties.put("hibernate.id.new_generator_mappings", "false");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;
     }
