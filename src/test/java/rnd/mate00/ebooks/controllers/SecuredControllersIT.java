@@ -9,15 +9,17 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import rnd.mate00.ebooks.config.SecurityTestDatabaseConfig;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.*;
 import rnd.mate00.ebooks.sec.BasicSecurityConfiguration;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 import rnd.mate00.ebooks.service.ShoppingService;
 
-import javax.sql.DataSource;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.eq;
@@ -29,7 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = {ThemeController.class, ShopController.class, BookController.class, ReadingProgressController.class, PurchaseController.class})
-@Import(BasicSecurityConfiguration.class)
+@Import({BasicSecurityConfiguration.class, SecurityTestDatabaseConfig.class})
+@ActiveProfiles("test")
+@Sql(scripts = "classpath:fake_users.sql")
 public class SecuredControllersIT {
 
     @Autowired
@@ -56,15 +60,13 @@ public class SecuredControllersIT {
     @MockBean
     ShoppingService shoppingService;
 
-    @MockBean(name = "security.datasource")
-    DataSource dataSource;
 
     @MockBean
     BCryptPasswordEncoder encoder;
 
     @Before
     public void setUp() {
-        when(readerRepository.findById(eq(1))).thenReturn(Optional.of(new Reader("John Read")));
+        when(readerRepository.findByName(eq("test_reader"))).thenReturn(Optional.of(new Reader("test_reader")));
     }
 
     @Test
@@ -147,19 +149,19 @@ public class SecuredControllersIT {
         mockMvc.perform(post("/themeForm")).andExpect(status().is3xxRedirection());
     }
 
-    @WithMockUser
+    @WithMockUser(username = "test_reader")
     @Test
     public void authUserCanSeeBooksInProgress() throws Exception {
         mockMvc.perform(get("/readings")).andExpect(status().isOk());
     }
 
-    @WithMockUser
+    @WithMockUser(username = "test_reader")
     @Test
     public void authUserCanBuyABook() throws Exception {
         mockMvc.perform(get("/books/1/buy")).andExpect(status().isOk());
     }
 
-    @WithMockUser
+    @WithMockUser(username = "test_reader")
     @Test
     public void authUserCanStartReadingABook() throws Exception {
         mockMvc.perform(get("/books/1/start"))
@@ -167,7 +169,7 @@ public class SecuredControllersIT {
                 .andExpect(redirectedUrl("/books/1/details"));
     }
 
-    @WithMockUser
+    @WithMockUser(username = "test_reader")
     @Test
     public void authUserCannotFinishReadingABook() throws Exception {
         mockMvc.perform(get("/books/1/finish"))

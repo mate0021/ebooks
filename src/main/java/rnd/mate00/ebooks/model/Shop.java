@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Created by mate00 on 21.01.18.
  */
-@Entity
+@Entity(name = "shop")
 public class Shop implements Serializable {
 
     @Id

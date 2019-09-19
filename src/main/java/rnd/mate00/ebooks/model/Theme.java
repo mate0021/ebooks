@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by mate00 on 21.01.18.
  */
-@Entity
+@Entity(name = "theme")
 public class Theme implements Serializable {
 
     @Id

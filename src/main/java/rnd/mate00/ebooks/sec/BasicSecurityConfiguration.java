@@ -16,6 +16,11 @@ import javax.sql.DataSource;
 @EnableWebSecurity // <- needed to app startup
 public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private static final String AUTHORITIES_QUERY =
+            "select username, role_name " +
+                    "from users, users_roles, role " +
+                    "where users.id = users_id and roles_id = role.id and username = ?";
+
     private DataSource dataSource;
     private BCryptPasswordEncoder encoder;
 
@@ -56,6 +61,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .password("{noop}pass")
 //                .roles("READER", "ADMIN");
         .jdbcAuthentication()
+                .authoritiesByUsernameQuery(AUTHORITIES_QUERY)
                 .dataSource(dataSource)
                 .passwordEncoder(encoder);
     }

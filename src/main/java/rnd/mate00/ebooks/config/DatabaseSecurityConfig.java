@@ -1,47 +1,42 @@
 package rnd.mate00.ebooks.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import rnd.mate00.ebooks.model.Book;
-import rnd.mate00.ebooks.repository.BookRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import rnd.mate00.ebooks.sec.RoleRepository;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackageClasses = { Book.class, BookRepository.class},
-        entityManagerFactoryRef = "bookEntityManagerFactory",
-        transactionManagerRef = "bookTransactionManager"
+        basePackageClasses = RoleRepository.class,
+        entityManagerFactoryRef = "securityEntityManagerFactory",
+        transactionManagerRef = "securityTransactionManager"
 )
-public class DatabaseConfiguration {
+public class DatabaseSecurityConfig {
 
-    @Value("${spring.datasource.driver-class-name}")
+    @Value("${security.datasource.driver-class-name}")
     private String driver;
 
-    @Value("${spring.datasource.url}")
+    @Value("${security.datasource.url}")
     private String url;
 
-    @Value("${spring.datasource.username}")
+    @Value("${security.datasource.username}")
     private String user;
 
-    @Value("${spring.datasource.password}")
+    @Value("${security.datasource.password}")
     private String pass;
 
-    @Bean(name = "books.datasource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource")
+
+    @Bean(name = "security.datasource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
@@ -53,14 +48,22 @@ public class DatabaseConfiguration {
     }
 
     @Bean
-    @Primary
-    public LocalContainerEntityManagerFactoryBean bookEntityManagerFactory(EntityManagerFactoryBuilder builder) {
+    public LocalContainerEntityManagerFactoryBean securityEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(dataSource())
-                .packages(Book.class, BookRepository.class)
-                .persistenceUnit("booksPU")
+                .packages(RoleRepository.class)
+                .persistenceUnit("securityPU")
                 .properties(getHibernateProperties())
                 .build();
+    }
+
+    @Bean
+    public JpaTransactionManager securityTransactionManager(EntityManagerFactoryBuilder builder) {
+        JpaTransactionManager manager = new JpaTransactionManager();
+        manager.setDataSource(dataSource());
+        manager.setEntityManagerFactory(securityEntityManagerFactory(builder).getObject());
+
+        return manager;
     }
 
     private Map<String, String> getHibernateProperties() {
@@ -71,14 +74,8 @@ public class DatabaseConfiguration {
         return properties;
     }
 
-
     @Bean
-    @Primary
-    public JpaTransactionManager bookTransactionManager(EntityManagerFactoryBuilder builder) {
-        JpaTransactionManager manager = new JpaTransactionManager();
-        manager.setDataSource(dataSource());
-        manager.setEntityManagerFactory(bookEntityManagerFactory(builder).getObject());
-
-        return manager;
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

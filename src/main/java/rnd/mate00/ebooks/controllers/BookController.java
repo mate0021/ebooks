@@ -1,10 +1,14 @@
 package rnd.mate00.ebooks.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import rnd.mate00.ebooks.commands.BookCommand;
 import rnd.mate00.ebooks.commands.BookInProgressCommand;
 import rnd.mate00.ebooks.commands.PurchaseCommand;
@@ -20,6 +24,7 @@ import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -116,10 +121,11 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/details")
-    public String bookDetails(@PathVariable String id, Model model) {
+    public String bookDetails(@PathVariable String id, Model model, Principal principal) {
+        Reader reader = readerRepository.findByName(principal.getName()).get();
         Book book = findBookById(id);
         Optional<ReadingProgress> readingProgress =
-                readingProgressService.getReadingProgressFor(book, readerRepository.findById(1).get());
+                readingProgressService.getReadingProgressFor(book, reader);
 
         model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
 
@@ -127,18 +133,24 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/start")
-    public String startReading(@PathVariable String id, Model model) {
+    public String startReading(@PathVariable String id, Model model, Principal principal) {
         Book book = findBookById(id);
-        Reader loggedReader = readerRepository.findById(1).get();
+        Reader loggedReader = readerRepository
+                .findByName(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
+
         readingProgressService.startReadingBook(book, loggedReader);
 
         return String.format("redirect:/books/%s/details", id);
     }
 
     @RequestMapping("/books/{id}/finish")
-    public String finishReading(@PathVariable String id, Model model) {
+    public String finishReading(@PathVariable String id, Model model, Principal principal) {
         Book book = findBookById(id);
-        Reader reader = readerRepository.findById(1).get();
+        Reader reader = readerRepository
+                .findByName(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
+
         readingProgressService.stopReadingBook(book, reader);
 
         return String.format("redirect:/books/%s/details", id);
@@ -152,12 +164,16 @@ public class BookController {
     }
 
     @RequestMapping("/books/{id}/buy")
-    public String buyBook(@PathVariable String id, Model model) {
+    public String buyBook(@PathVariable String id, Model model, Principal principal) {
         Book book = findBookById(id);
 
         PurchaseCommand purchaseBean = new PurchaseCommand();
         purchaseBean.setBook(book);
-        purchaseBean.setReader(readerRepository.findById(1).get());
+        purchaseBean.setReader(
+                readerRepository.
+                        findByName(principal.getName()).
+                        orElseThrow(() -> new UsernameNotFoundException(principal.getName()))
+        );
         List<Shop> shops = new ArrayList<>();
         shopRepository.findAll().forEach(s -> shops.add(s));
 
