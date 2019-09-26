@@ -1,8 +1,11 @@
 package rnd.mate00.ebooks.commands;
 
+import rnd.mate00.ebooks.controllers.validators.PasswordsMatch;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@PasswordsMatch
 public class ReaderCommand {
 
     private int id;

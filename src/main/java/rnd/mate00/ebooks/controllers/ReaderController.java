@@ -39,7 +39,6 @@ public class ReaderController {
                                  Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("reader", readerBean);
-
             return "reader/readerform";
         }
 
