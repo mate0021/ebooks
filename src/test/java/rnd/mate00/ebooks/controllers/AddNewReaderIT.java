@@ -34,7 +34,7 @@ public class AddNewReaderIT {
     }
 
     @Test
-    public void addNewReader() throws Exception {
+    public void addNewReader_DemandsTwoPasswords() throws Exception {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("name", "somename");
         params.add("email", "some@email");
@@ -42,6 +42,7 @@ public class AddNewReaderIT {
         mockMvc.perform(post("/readerForm").params(params))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeHasErrors("reader"))
+                .andExpect(model().attributeHasFieldErrors("reader", "password", "repeatedPassword"))
                 .andExpect(view().name("reader/readerform"));
     }
 
