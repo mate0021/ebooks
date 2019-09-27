@@ -1,7 +1,9 @@
 package rnd.mate00.ebooks.service;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,6 +41,9 @@ public class ShoppingServiceIT {
 
     @Autowired
     private ThemeRepository themeRepository;
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     private Book book;
 
@@ -79,7 +84,7 @@ public class ShoppingServiceIT {
         assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, otherShop)).isPresent()).isTrue();
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void readerCantBuyTheSameBookInTheSameShop() {
         // when
         subject.buyABook(reader, book, shop, new BigDecimal(21));
@@ -88,6 +93,15 @@ public class ShoppingServiceIT {
         // then
         Iterable<Shopping> allById = shoppingRepository.findAllById(Arrays.asList(new ShoppingKey(book, reader, shop)));
         assertThat(allById.spliterator().getExactSizeIfKnown()).isEqualTo(1);
+    }
+
+    @Test
+    public void readerCantBuyTheSameBookTwice_ExpectError() {
+        expectedException.expect(IllegalStateException.class);
+
+        // when
+        subject.buyABook(reader, book, shop, new BigDecimal(10.50));
+        subject.buyABook(reader, book, shop, new BigDecimal(10.50));
     }
 
     @Test

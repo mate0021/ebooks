@@ -35,6 +35,14 @@ public class ShoppingService {
         Date buyDate = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
         shopping.setBuyDate(buyDate);
 
-        shoppingRepository.save(shopping);
+        if (alreadyBought(key)) {
+            throw new IllegalStateException(String.format("Book was already bought %s", key));
+        } else {
+            shoppingRepository.save(shopping);
+        }
+    }
+
+    private boolean alreadyBought(ShoppingKey key) {
+        return shoppingRepository.findById(key).isPresent();
     }
 }

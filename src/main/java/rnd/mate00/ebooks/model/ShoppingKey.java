@@ -67,4 +67,13 @@ public class ShoppingKey implements Serializable {
     public int hashCode() {
         return Objects.hash(book, reader, shop);
     }
+
+    @Override
+    public String toString() {
+        return "ShoppingKey{" +
+                "book=" + book +
+                ", reader=" + reader +
+                ", shop=" + shop +
+                '}';
+    }
 }
