@@ -17,8 +17,12 @@ import rnd.mate00.ebooks.converters.BookCommandToBook;
 import rnd.mate00.ebooks.converters.BookToBookCommand;
 import rnd.mate00.ebooks.converters.ThemeToThemeCommand;
 import rnd.mate00.ebooks.model.*;
-import rnd.mate00.ebooks.repository.*;
+import rnd.mate00.ebooks.repository.BookRepository;
+import rnd.mate00.ebooks.repository.ReaderRepository;
+import rnd.mate00.ebooks.repository.ShopRepository;
+import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
+import rnd.mate00.ebooks.service.ShoppingService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -58,6 +62,9 @@ public class BookController {
 
     @Autowired
     private ShopRepository shopRepository;
+
+    @Autowired
+    private ShoppingService shoppingService;
 
 
     @RequestMapping({"/books", "/"})
@@ -125,7 +132,7 @@ public class BookController {
                 readingProgressService.getReadingProgressFor(book, reader);
 
         model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
-        model.addAttribute("buyDate", getPurchaseDateFor(book, reader));
+        model.addAttribute("buyDate", shoppingService.getPurchaseDateFor(book, reader));
 
         return "book/bookdetails";
     }
@@ -159,19 +166,6 @@ public class BookController {
         Date finished = readingProgress.map(ReadingProgress::getEnd).orElse(null);
 
         return new BookInProgressCommand(book, started, finished);
-    }
-
-    @Autowired
-    private ShoppingRepository shoppingRepository;
-
-    private Date getPurchaseDateFor(Book book, Reader reader) {
-        List<Shopping> boughtBooks = shoppingRepository.findLatestShoppingBookByReader(book, reader);
-
-        return boughtBooks
-                .stream()
-                .findFirst()
-                .map(Shopping::getBuyDate)
-                .orElse(null);
     }
 
     @RequestMapping("/books/{id}/buy")

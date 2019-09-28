@@ -12,7 +12,9 @@ import rnd.mate00.ebooks.model.*;
 import rnd.mate00.ebooks.repository.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -116,5 +118,31 @@ public class ShoppingServiceIT {
         // then
         assertThat(shoppingRepository.findById(new ShoppingKey(book, reader, shop)).isPresent()).isTrue();
         assertThat(shoppingRepository.findById(new ShoppingKey(book, otherReader, shop)).isPresent()).isTrue();
+    }
+
+    @Test
+    public void shouldReturnLatestPurchaseOfBookForReader() {
+        // given
+        subject.buyABook(reader, book, shop, new BigDecimal(10.99), LocalDate.of(2019, 9, 28));
+
+        // when
+        Date result = subject.getPurchaseDateFor(book, reader);
+
+        // then
+        assertThat(result).isEqualTo("2019-09-28");
+    }
+
+    @Test
+    public void shouldReturnLatestPurchaseDate_WhenBoughtInDifferentShops() {
+        // given
+        Shop otherShop = shopRepository.save(new Shop("Ebookpoint", ""));
+        subject.buyABook(reader, book, shop, new BigDecimal(10.99), LocalDate.of(2018, 8, 28));
+        subject.buyABook(reader, book, otherShop, new BigDecimal(9.99), LocalDate.of(2019, 9, 28));
+
+        // when
+        Date result = subject.getPurchaseDateFor(book, reader);
+
+        // then
+        assertThat(result).isEqualTo("2019-09-28");
     }
 }

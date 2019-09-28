@@ -15,6 +15,7 @@ import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
+import rnd.mate00.ebooks.service.ShoppingService;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -43,6 +44,9 @@ public class BookControllerIT {
 
     @MockBean
     private ReadingProgressService readingProgressService;
+
+    @MockBean
+    private ShoppingService shoppingService;
 
 
     @Test

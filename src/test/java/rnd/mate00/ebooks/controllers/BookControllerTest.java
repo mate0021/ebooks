@@ -24,6 +24,7 @@ import rnd.mate00.ebooks.repository.ReaderRepository;
 import rnd.mate00.ebooks.repository.ShopRepository;
 import rnd.mate00.ebooks.repository.ThemeRepository;
 import rnd.mate00.ebooks.service.ReadingProgressService;
+import rnd.mate00.ebooks.service.ShoppingService;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -68,6 +69,9 @@ public class BookControllerTest {
 
     @Mock
     private BookCommandToBook bookCommandToBook;
+
+    @Mock
+    private ShoppingService shoppingService;
 
     @Mock
     private Principal principal;

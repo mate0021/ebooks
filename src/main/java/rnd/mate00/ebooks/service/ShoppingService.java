@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by mate00 on 12.02.18.
@@ -44,5 +45,15 @@ public class ShoppingService {
 
     private boolean alreadyBought(ShoppingKey key) {
         return shoppingRepository.findById(key).isPresent();
+    }
+
+    public Date getPurchaseDateFor(Book book, Reader reader) {
+        List<Shopping> boughtBooks = shoppingRepository.findLatestShoppingBookByReader(book, reader);
+
+        return boughtBooks
+                .stream()
+                .findFirst()
+                .map(Shopping::getBuyDate)
+                .orElse(null);
     }
 }
