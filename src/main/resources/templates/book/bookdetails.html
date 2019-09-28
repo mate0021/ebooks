@@ -73,7 +73,10 @@
                                     <span th:if="${book.finished == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/finish'}">Finish</a></span>
                                     <span th:unless="${book.finished == null}" th:text="${book.finished}"></span>
                                 </td>
-                                <td><a href="#" th:href="@{'/books/' + ${book.id} + '/buy'}">Buy</a></td>
+                                <td>
+                                    <span th:if="${buyDate == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/buy'}">Buy</a></span>
+                                    <span th:unless="${buyDate == null}" th:text="${buyDate}"/>
+                                </td>
                             </tr>
                             <tr><td>Delete</a></td></tr>
                         </table>
