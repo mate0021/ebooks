@@ -107,4 +107,14 @@ public class SecureReader {
     public int hashCode() {
         return Objects.hash(userName, password);
     }
+
+    @Override
+    public String toString() {
+        return "SecureReader{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
+    }
 }

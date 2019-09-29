@@ -1,8 +1,11 @@
 package rnd.mate00.ebooks.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rnd.mate00.ebooks.commands.ReaderCommand;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.ReaderRepository;
@@ -16,6 +19,8 @@ import java.util.Set;
 
 @Service
 public class ReaderService {
+
+    private static final Logger log = LoggerFactory.getLogger(ReaderService.class);
 
     private ReaderRepository readerRepository;
 
@@ -33,6 +38,7 @@ public class ReaderService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Transactional
     public void saveReader(ReaderCommand readerCommand) {
         String username = readerCommand.getName();
         String password = passwordEncoder.encode(readerCommand.getPassword());
@@ -42,8 +48,10 @@ public class ReaderService {
         roles.add(defaultRole);
         SecureReader secureReader = new SecureReader(username, password, true, roles);
         secureReaderRepository.save(secureReader);
+        log.info("Saved reader {} to secured reader repository.", secureReader);
 
         Reader reader = new Reader(username);
         readerRepository.save(reader);
+        log.info("Saved reader {} to reader repository.", reader);
     }
 }
