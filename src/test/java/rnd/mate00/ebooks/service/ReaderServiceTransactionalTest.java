@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 import rnd.mate00.ebooks.commands.ReaderCommand;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.ReaderRepository;
@@ -21,9 +20,6 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
-//@ActiveProfiles("test")
-//@Import({BasicSecurityConfiguration.class, SecurityTestDatabaseConfig.class})
 public class ReaderServiceTransactionalTest {
 
     @Autowired
@@ -41,11 +37,11 @@ public class ReaderServiceTransactionalTest {
     @Before
     public void setUp() {
         clearRepositories();
-        Role role = roleRepository.save(new Role(1, "reader"));
+        roleRepository.save(new Role(1, "reader"));
     }
 
     @Test
-    public void t() {
+    public void shouldNotSaveSecureReaderIfAddingReaderFails() {
         // given
         ReaderCommand readerBean = new ReaderCommand(1, "reader", "pass123", "pass123", "e@mail");
         when(readerRepository.save(any(Reader.class))).thenThrow(new IllegalStateException("Something wrong with db"));
@@ -53,11 +49,7 @@ public class ReaderServiceTransactionalTest {
 
 
         // when
-        try {
-            subject.saveReader(readerBean);
-        } catch (Exception e) {
-            //
-        }
+        subject.saveReader(readerBean);
 
         // then
         assertThat(secureReaderRepository.count()).isEqualTo(0);

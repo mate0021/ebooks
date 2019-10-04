@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Transactional
 public class ReaderService {
 
     private static final Logger log = LoggerFactory.getLogger(ReaderService.class);
@@ -51,7 +52,13 @@ public class ReaderService {
         log.info("Saved reader {} to secured reader repository.", secureReader);
 
         Reader reader = new Reader(username);
-        readerRepository.save(reader);
-        log.info("Saved reader {} to reader repository.", reader);
+        try {
+            readerRepository.save(reader);
+            log.info("Saved reader {} to reader repository.", reader);
+        } catch (Exception e) {
+            log.error("Error during saving reader. Reverting.");
+            secureReaderRepository.delete(secureReader);
+            e.printStackTrace();
+        }
     }
 }
