@@ -26,6 +26,8 @@ import rnd.mate00.ebooks.service.ShoppingService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -133,8 +135,25 @@ public class BookController {
 
         model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
         model.addAttribute("buyDate", shoppingService.getPurchaseDateFor(book, reader));
+        model.addAttribute("startDate", LocalDate.now().toString());
 
         return "book/bookdetails";
+    }
+
+    @PostMapping
+    @RequestMapping("/startReading")
+    public String startReadingBook(BookInProgressCommand bookInProgress, Principal principal) {
+        System.out.println(bookInProgress);
+        int bookId = bookInProgress.getId();
+        Book book = findBookById(String.valueOf(bookId));
+        Reader loggedReader = readerRepository
+                .findByName(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
+
+        LocalDate startingDate = bookInProgress.getStarted().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        readingProgressService.startReadingBook(book, loggedReader, startingDate);
+
+        return "redirect:/books/" + bookId + "/details";
     }
 
     @RequestMapping("/books/{id}/start")

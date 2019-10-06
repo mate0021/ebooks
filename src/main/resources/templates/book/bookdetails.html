@@ -66,7 +66,16 @@
                                 <td th:text="${book.locations}">3456</td>
                                 <td th:text="${book.theme.theme}">criminal</td>
                                 <td>
-                                    <span th:if="${book.started == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/start'}">Start</a></span>
+                                    <span th:if="${book.started == null}">
+                                        <form th:object="${book}" th:action="@{/startReading}">
+                                            <!--<p th:text="${book}"/>-->
+                                            <!--<p th:text="${book.id}"/>-->
+                                            <input type="hidden" th:value="${book.id}" name="book"/>
+                                            <input type="text" th:field="${book.started}"/>
+                                            <button type="submit">Start</button>
+                                            <!--<a href="#" th:href="@{'/books/' + ${book.id} + '/start'}">Start</a>-->
+                                        </form>
+                                    </span>
                                     <span th:unless="${book.started == null}" th:text="${book.started}"></span>
                                 </td>
                                 <td>
