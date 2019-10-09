@@ -24,6 +24,18 @@ public class BookInProgressCommand {
         return book.getId();
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Date getStarted() {
+        return started;
+    }
+
     public String getTitle() {
         return book.getTitle();
     }
@@ -40,12 +52,16 @@ public class BookInProgressCommand {
         return book.getTheme();
     }
 
-    public Date getStarted() {
-        return started;
+    public void setStarted(Date started) {
+        this.started = started;
     }
 
     public Date getFinished() {
         return finished;
+    }
+
+    public void setFinished(Date finished) {
+        this.finished = finished;
     }
 
     @Override

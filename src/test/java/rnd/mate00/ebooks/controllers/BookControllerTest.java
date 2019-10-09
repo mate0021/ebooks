@@ -3,11 +3,11 @@ package rnd.mate00.ebooks.controllers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import rnd.mate00.ebooks.commands.BookCommand;
@@ -27,6 +27,7 @@ import rnd.mate00.ebooks.service.ReadingProgressService;
 import rnd.mate00.ebooks.service.ShoppingService;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static java.util.Arrays.asList;
@@ -40,49 +41,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by mate00 on 16.09.18.
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@WebMvcTest(value = BookController.class, secure = false)
 public class BookControllerTest {
 
-    @InjectMocks
-    private BookController subject;
+    @MockBean private ReadingProgressService readingProgressService;
+    @MockBean private BookRepository bookRepository;
+    @MockBean private ReaderRepository readerRepository;
+    @MockBean private ShopRepository shopRepository;
+    @MockBean private ThemeRepository themeRepository;
+    @MockBean private ThemeToThemeCommand themeToThemeCommand;
+    @MockBean private BookToBookCommand bookToBookCommand;
+    @MockBean private BookCommandToBook bookCommandToBook;
+    @MockBean private ShoppingService shoppingService;
+    @MockBean private Principal principal;
 
-    @Mock
-    private ReadingProgressService readingProgressService;
-
-    @Mock
-    private BookRepository bookRepository;
-
-    @Mock
-    private ReaderRepository readerRepository;
-
-    @Mock
-    private ShopRepository shopRepository;
-
-    @Mock
-    private ThemeRepository themeRepository;
-
-    @Mock
-    private ThemeToThemeCommand themeToThemeCommand;
-
-    @Mock
-    private BookToBookCommand bookToBookCommand;
-
-    @Mock
-    private BookCommandToBook bookCommandToBook;
-
-    @Mock
-    private ShoppingService shoppingService;
-
-    @Mock
-    private Principal principal;
-
+    @Autowired
     private MockMvc mockMvc;
 
-    private Book testBook = new Book("title", "author", 5000, new Theme());
+    private Book testBook = new Book(1,"title", "author", 5000, new Theme());
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(subject).build();
         when(bookRepository.findById(1)).thenReturn(Optional.of(testBook));
         when(readerRepository.findByName("mate00")).thenReturn(Optional.of(new Reader()));
         when(shopRepository.findAll()).thenReturn(asList(new Shop("shoporama", "www.shoporama.com")));
@@ -99,13 +79,19 @@ public class BookControllerTest {
 
     @Test
     public void shouldShowDetailsOfTheBook_WhenStartReading() throws Exception {
+        // given
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("book.id", "0");
+        params.add("started", "2019/10/06");
+
         // when
-        mockMvc.perform(get("/books/1/start").principal(principal))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/books/1/details"));
+        mockMvc.perform(post("/startReading")
+                .params(params)
+                .principal(principal))
+                .andExpect(view().name("redirect:/books/0/details"));
 
         // then
-        verify(readingProgressService).startReadingBook(any(Book.class), any(Reader.class));
+        verify(readingProgressService).startReadingBook(any(Book.class), any(Reader.class), any(LocalDate.class));
     }
 
     @Test

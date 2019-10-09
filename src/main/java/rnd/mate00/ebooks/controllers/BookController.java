@@ -135,15 +135,14 @@ public class BookController {
 
         model.addAttribute("book", getProgressBeanForBook(book, readingProgress));
         model.addAttribute("buyDate", shoppingService.getPurchaseDateFor(book, reader));
-        model.addAttribute("startDate", LocalDate.now().toString());
+        model.addAttribute("progress", getProgressBeanForBook(book, readingProgress));
 
         return "book/bookdetails";
     }
 
     @PostMapping
     @RequestMapping("/startReading")
-    public String startReadingBook(BookInProgressCommand bookInProgress, Principal principal) {
-        System.out.println(bookInProgress);
+    public String startReadingBook(@ModelAttribute(name = "progress") BookInProgressCommand bookInProgress, Principal principal) {
         int bookId = bookInProgress.getId();
         Book book = findBookById(String.valueOf(bookId));
         Reader loggedReader = readerRepository
@@ -154,18 +153,6 @@ public class BookController {
         readingProgressService.startReadingBook(book, loggedReader, startingDate);
 
         return "redirect:/books/" + bookId + "/details";
-    }
-
-    @RequestMapping("/books/{id}/start")
-    public String startReading(@PathVariable String id, Model model, Principal principal) {
-        Book book = findBookById(id);
-        Reader loggedReader = readerRepository
-                .findByName(principal.getName())
-                .orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
-
-        readingProgressService.startReadingBook(book, loggedReader);
-
-        return String.format("redirect:/books/%s/details", id);
     }
 
     @RequestMapping("/books/{id}/finish")

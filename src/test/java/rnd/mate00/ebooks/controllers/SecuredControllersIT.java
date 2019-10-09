@@ -13,6 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import rnd.mate00.ebooks.config.SecurityTestDatabaseConfig;
 import rnd.mate00.ebooks.model.Reader;
 import rnd.mate00.ebooks.repository.*;
@@ -164,9 +166,13 @@ public class SecuredControllersIT {
     @WithMockUser(username = "test_reader")
     @Test
     public void authUserCanStartReadingABook() throws Exception {
-        mockMvc.perform(get("/books/1/start"))
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("book.id", "0");
+        params.add("started", "2019/10/06");
+
+        mockMvc.perform(post("/startReading").params(params))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/books/1/details"));
+                .andExpect(redirectedUrl("/books/0/details"));
     }
 
     @WithMockUser(username = "test_reader")
