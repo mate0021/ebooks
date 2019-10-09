@@ -96,13 +96,19 @@ public class BookControllerTest {
 
     @Test
     public void shouldShowDetailsOfTheBook_WhenFinishReading() throws Exception {
+        // given
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("book.id", "0");
+        params.add("finished", "2019/10/06");
+
         // when
-        mockMvc.perform(get("/books/1/finish").principal(principal))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/books/1/details"));
+        mockMvc.perform(post("/finishReading")
+                .params(params)
+                .principal(principal))
+                .andExpect(view().name("redirect:/books/0/details"));
 
         // then
-        verify(readingProgressService).stopReadingBook(any(Book.class), any(Reader.class));
+        verify(readingProgressService).stopReadingBook(any(Book.class), any(Reader.class), any(LocalDate.class));
     }
 
     @Test

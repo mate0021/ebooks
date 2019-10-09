@@ -155,16 +155,19 @@ public class BookController {
         return "redirect:/books/" + bookId + "/details";
     }
 
-    @RequestMapping("/books/{id}/finish")
-    public String finishReading(@PathVariable String id, Model model, Principal principal) {
-        Book book = findBookById(id);
-        Reader reader = readerRepository
+    @PostMapping
+    @RequestMapping("/finishReading")
+    public String finishReadingBook(@ModelAttribute(name = "progress") BookInProgressCommand bookInProgress, Principal principal) {
+        int bookId = bookInProgress.getId();
+        Book book = findBookById(String.valueOf(bookId));
+        Reader loggedReader = readerRepository
                 .findByName(principal.getName())
                 .orElseThrow(() -> new UsernameNotFoundException(principal.getName()));
 
-        readingProgressService.stopReadingBook(book, reader);
+        LocalDate finishDate = bookInProgress.getFinished().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        readingProgressService.stopReadingBook(book, loggedReader, finishDate);
 
-        return String.format("redirect:/books/%s/details", id);
+        return "redirect:/books/" + bookId + "/details";
     }
 
     private BookInProgressCommand getProgressBeanForBook(Book book, Optional<ReadingProgress> readingProgress) {

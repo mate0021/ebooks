@@ -69,14 +69,20 @@
                                     <span th:if="${book.started == null}">
                                         <form th:object="${progress}" th:action="@{/startReading}">
                                             <input type="hidden" th:value="*{book.id}" name="book"/>
-                                            <input type="text" th:field="*{started}"/>
+                                            <input type="text" th:field="*{started}" size="10"/>
                                             <button type="submit">Start</button>
                                         </form>
                                     </span>
                                     <span th:unless="${book.started == null}" th:text="${book.started}"></span>
                                 </td>
                                 <td>
-                                    <span th:if="${book.finished == null}"><a href="#" th:href="@{'/books/' + ${book.id} + '/finish'}">Finish</a></span>
+                                    <span th:if="${book.finished == null}">
+                                        <form th:object="${progress}" th:action="@{/finishReading}">
+                                            <input type="hidden" th:value="*{book.id}" name="book"/>
+                                            <input type="text" th:field="*{finished}" size="10"/>
+                                            <button type="submit">Finish</button>
+                                        </form>
+                                    </span>
                                     <span th:unless="${book.finished == null}" th:text="${book.finished}"></span>
                                 </td>
                                 <td>

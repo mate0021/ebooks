@@ -177,10 +177,14 @@ public class SecuredControllersIT {
 
     @WithMockUser(username = "test_reader")
     @Test
-    public void authUserCannotFinishReadingABook() throws Exception {
-        mockMvc.perform(get("/books/1/finish"))
+    public void authUserCanFinishReadingABook() throws Exception {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("book.id", "0");
+        params.add("finished", "2019/10/06");
+
+        mockMvc.perform(post("/finishReading").params(params))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/books/1/details"));
+                .andExpect(redirectedUrl("/books/0/details"));
     }
 
 }
