@@ -78,3 +78,6 @@ insert into book (author, locations, title, theme_id) values ('Amy McCready', 47
 insert into book (author, locations, title, theme_id) values ('Max Kanat-Alexander', 2770, 'Understanding software', 5);
 insert into book (author, locations, title, theme_id) values ('Michał Szafrański', 14266, 'Finansowy ninja', 13);
 insert into book (author, locations, title, theme_id) values ('Gretchen Rubin', 5047, 'Lepiej, 21 strategii, by osiągnąć szczęście', 13);
+insert into book (author, locations, title, theme_id) values ('Frederick P. Brooks Jr', 5413, 'Legendarny osobomiesiąc. Opowieść o inżynierii oprogramowania', 5);
+insert into book (author, locations, title, theme_id) values ('David Rock', 5614, 'Twój mózg w działaniu', 13);
+insert into book (author, locations, title, theme_id) values ('William Ury', 2191, 'Dochodząc do tak ze sobą', 13);
