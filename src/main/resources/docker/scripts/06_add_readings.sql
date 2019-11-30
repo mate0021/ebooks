@@ -66,4 +66,5 @@ insert into reading_progress (reading_start, reading_end, key_book, key_reader) 
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/05/18', '2019/07/27', 80, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/06/09', '2019/06/22', 10, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/05/24', null, 81, 1);
-insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/08/01', null, 82, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/08/01', '2019/11/11', 82, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2019/11/11', null, 84, 1);
