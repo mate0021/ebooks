@@ -81,3 +81,4 @@ insert into book (author, locations, title, theme_id) values ('Gretchen Rubin', 
 insert into book (author, locations, title, theme_id) values ('Frederick P. Brooks Jr', 5413, 'Legendarny osobomiesiąc. Opowieść o inżynierii oprogramowania', 5);
 insert into book (author, locations, title, theme_id) values ('David Rock', 5614, 'Twój mózg w działaniu', 13);
 insert into book (author, locations, title, theme_id) values ('William Ury', 2191, 'Dochodząc do tak ze sobą', 13);
+insert into book (author, locations, title, theme_id) values ('John Sonmez', 9086, 'Sprawny programista. Pracuj, zarabiaj i zdobywaj kwalifikacje.', 13);
