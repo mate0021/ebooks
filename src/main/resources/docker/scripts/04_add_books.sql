@@ -82,3 +82,4 @@ insert into book (author, locations, title, theme_id) values ('Frederick P. Broo
 insert into book (author, locations, title, theme_id) values ('David Rock', 5614, 'Twój mózg w działaniu', 13);
 insert into book (author, locations, title, theme_id) values ('William Ury', 2191, 'Dochodząc do tak ze sobą', 13);
 insert into book (author, locations, title, theme_id) values ('John Sonmez', 9086, 'Sprawny programista. Pracuj, zarabiaj i zdobywaj kwalifikacje.', 13);
+insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 17553, 'Miecz i kwiaty', 8);
