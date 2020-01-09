@@ -83,3 +83,10 @@ insert into book (author, locations, title, theme_id) values ('David Rock', 5614
 insert into book (author, locations, title, theme_id) values ('William Ury', 2191, 'Dochodząc do tak ze sobą', 13);
 insert into book (author, locations, title, theme_id) values ('John Sonmez', 9086, 'Sprawny programista. Pracuj, zarabiaj i zdobywaj kwalifikacje.', 13);
 insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 17553, 'Miecz i kwiaty', 8);
+insert into book (author, locations, title, theme_id) values ('Victor Davich', 2649, '8 minut medytacji. Spokój umysłu na co dzień.', 13);
+insert into book (author, locations, title, theme_id) values ('Robert Sedgewick', 2649, 'Algorytmy. Wydanie IV', 5);
+insert into book (author, locations, title, theme_id) values ('Ryszard Tadeusiewicz', 3910, 'Krótka historia informatyki', 5);
+insert into book (author, locations, title, theme_id) values ('Mariusz Szuba', 1051, 'Legalny doping emocjonalny', 13);
+insert into book (author, locations, title, theme_id) values ('Pramod J. Sadalage, Martin Fowler', 3765, 'NoSQL. Kompendium wiedzy', 5);
+insert into book (author, locations, title, theme_id) values ('Trudi Canavan', 6614, 'Gildia magów', 8);
+
