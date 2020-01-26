@@ -89,4 +89,4 @@ insert into book (author, locations, title, theme_id) values ('Ryszard Tadeusiew
 insert into book (author, locations, title, theme_id) values ('Mariusz Szuba', 1051, 'Legalny doping emocjonalny', 13);
 insert into book (author, locations, title, theme_id) values ('Pramod J. Sadalage, Martin Fowler', 3765, 'NoSQL. Kompendium wiedzy', 5);
 insert into book (author, locations, title, theme_id) values ('Trudi Canavan', 6614, 'Gildia magów', 8);
-
+insert into book (author, locations, title, theme_id) values ('Michael Lennington, Brian P. Moran', 3514, '12-tygodniowy rok. Osiągnij w 12 tygodni więcej niż inni w 12 miesięcy.', 13);
