@@ -91,3 +91,4 @@ insert into book (author, locations, title, theme_id) values ('Pramod J. Sadalag
 insert into book (author, locations, title, theme_id) values ('Trudi Canavan', 6614, 'Gildia magów', 8);
 insert into book (author, locations, title, theme_id) values ('Michael Lennington, Brian P. Moran', 3514, '12-tygodniowy rok. Osiągnij w 12 tygodni więcej niż inni w 12 miesięcy.', 13);
 insert into book (author, locations, title, theme_id) values ('Bartosz Kulisz', 80, 'Twoja hierarchia wartości', 13);
+insert into book (author, locations, title, theme_id) values ('Michael Calvin', 4609, 'Ludzie znikąd. Nieprzenikniony świat skautów piłkarskich', 4);
