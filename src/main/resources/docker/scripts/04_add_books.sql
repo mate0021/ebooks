@@ -92,3 +92,6 @@ insert into book (author, locations, title, theme_id) values ('Trudi Canavan', 6
 insert into book (author, locations, title, theme_id) values ('Michael Lennington, Brian P. Moran', 3514, '12-tygodniowy rok. Osiągnij w 12 tygodni więcej niż inni w 12 miesięcy.', 13);
 insert into book (author, locations, title, theme_id) values ('Bartosz Kulisz', 80, 'Twoja hierarchia wartości', 13);
 insert into book (author, locations, title, theme_id) values ('Michael Calvin', 4609, 'Ludzie znikąd. Nieprzenikniony świat skautów piłkarskich', 4);
+insert into book (author, locations, title, theme_id) values ('Pat Flynn', 3991, 'Gotowi na start. Jak sprawdzić pomysł na biznes, żeby nie stracić czasu i pieniędzy', 13);
+insert into book (author, locations, title, theme_id) values ('Marcin Feddek', 7123, 'Dekalog Nawałki', 4);
+insert into book (author, locations, title, theme_id) values ('Jared Diamond', 10834, 'Strzelby, zarazki i stal. Krótka historia ludzkości', 2);
