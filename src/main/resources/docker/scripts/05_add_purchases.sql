@@ -82,3 +82,6 @@ insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/01/22', 19.90, 92, 1, 1);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/04/04', 0, 93, 1, 1);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/06/30', 0, 94, 1, 2);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/07/20', 0, 95, 1, 1);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/07/20', 0, 96, 1, 1);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2020/07/23', 0, 97, 1, 1);
