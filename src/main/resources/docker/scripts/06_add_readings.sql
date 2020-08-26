@@ -9,7 +9,7 @@ insert into reading_progress (reading_start, reading_end, key_book, key_reader) 
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2016/08/20', '2016/08/24', 11, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/02/10', '2017/02/15', 12, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/02/15', '2017/02/28', 13, 1);
-insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/03/01', null, 14, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/03/01', '2020/08/25', 14, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/03/15', null, 15, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/04/21', '2017/05/21', 16, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2017/07/19', '2017/07/31', 17, 1);
