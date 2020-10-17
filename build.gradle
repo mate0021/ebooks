@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.M2'
+		springBootVersion = '2.3.0.M1'
 	}
 	repositories {
 		mavenCentral()
@@ -20,7 +20,6 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'rnd.mate00'
 version = '1.0.0-SNAPSHOT'
-//sourceCompatibility = 10
 
 repositories {
 	mavenCentral()
@@ -36,6 +35,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-activemq")
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('mysql:mysql-connector-java')
+	compile('javax.validation:validation-api')
 
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
