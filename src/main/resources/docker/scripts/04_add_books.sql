@@ -95,3 +95,8 @@ insert into book (author, locations, title, theme_id) values ('Michael Calvin', 
 insert into book (author, locations, title, theme_id) values ('Pat Flynn', 3991, 'Gotowi na start. Jak sprawdzić pomysł na biznes, żeby nie stracić czasu i pieniędzy', 13);
 insert into book (author, locations, title, theme_id) values ('Marcin Feddek', 7123, 'Dekalog Nawałki', 4);
 insert into book (author, locations, title, theme_id) values ('Jared Diamond', 10834, 'Strzelby, zarazki i stal. Krótka historia ludzkości', 2);
+insert into book (author, locations, title, theme_id) values ('T. Harv Eker', 3069, 'Bogaty albo biedny. Po prostu różni mentalnie', 13);
+insert into book (author, locations, title, theme_id) values ('Niels Lunde', 6393, 'Lego. Jak pokonać kryzys, zawojować świat i zbudować potęgę z klocków.', 2);
+insert into book (author, locations, title, theme_id) values ('Rafael Santandreu', 3200, 'Wszystko jest łatwiejsze niż nam się wydaje.', 13);
+insert into book (author, locations, title, theme_id) values ('David Sumpter', 5302, 'Piłkomatyka. Matematyczne piękno futbolu', 4);
+insert into book (author, locations, title, theme_id) values ('Scott Young', 4586, 'Zostań ultrasamoukiem. Jak mistrzowsko opanować twarde umiejętności w zadziwiająco krótkim czasie.', 13);
