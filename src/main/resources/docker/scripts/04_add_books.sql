@@ -100,3 +100,4 @@ insert into book (author, locations, title, theme_id) values ('Niels Lunde', 639
 insert into book (author, locations, title, theme_id) values ('Rafael Santandreu', 3200, 'Wszystko jest łatwiejsze niż nam się wydaje.', 13);
 insert into book (author, locations, title, theme_id) values ('David Sumpter', 5302, 'Piłkomatyka. Matematyczne piękno futbolu', 4);
 insert into book (author, locations, title, theme_id) values ('Scott Young', 4586, 'Zostań ultrasamoukiem. Jak mistrzowsko opanować twarde umiejętności w zadziwiająco krótkim czasie.', 13);
+insert into book (author, locations, title, theme_id) values ('James Clear', 0000, 'Atomowe nawyki', 13);
