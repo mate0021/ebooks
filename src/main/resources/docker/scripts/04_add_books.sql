@@ -101,3 +101,5 @@ insert into book (author, locations, title, theme_id) values ('Rafael Santandreu
 insert into book (author, locations, title, theme_id) values ('David Sumpter', 5302, 'Piłkomatyka. Matematyczne piękno futbolu', 4);
 insert into book (author, locations, title, theme_id) values ('Scott Young', 4586, 'Zostań ultrasamoukiem. Jak mistrzowsko opanować twarde umiejętności w zadziwiająco krótkim czasie.', 13);
 insert into book (author, locations, title, theme_id) values ('James Clear', 4762, 'Atomowe nawyki', 13);
+insert into book (author, locations, title, theme_id) values ('Ronald Reng', 7259, 'Bundesliga. Niezwykła opowieść o niemieckim futbolu', 4);
+insert into book (author, locations, title, theme_id) values ('Jesper Juul', 0, 'O granicach. Kompetentne relacje z dzieckiem', 13);
