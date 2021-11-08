@@ -103,3 +103,5 @@ insert into book (author, locations, title, theme_id) values ('Scott Young', 458
 insert into book (author, locations, title, theme_id) values ('James Clear', 4762, 'Atomowe nawyki', 13);
 insert into book (author, locations, title, theme_id) values ('Ronald Reng', 7259, 'Bundesliga. Niezwykła opowieść o niemieckim futbolu', 4);
 insert into book (author, locations, title, theme_id) values ('Jesper Juul', 0, 'O granicach. Kompetentne relacje z dzieckiem', 13);
+insert into book (author, locations, title, theme_id) values ('David Lagercrantz', 7037, 'Co nas nie zabije', 6);
+insert into book (author, locations, title, theme_id) values ('David Lagercrantz', 5604, 'Mężczyzna, który gonił swój cień', 6);
