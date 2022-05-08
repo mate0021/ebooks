@@ -107,3 +107,5 @@ insert into book (author, locations, title, theme_id) values ('David Lagercrantz
 insert into book (author, locations, title, theme_id) values ('David Lagercrantz', 5604, 'Mężczyzna, który gonił swój cień', 6);
 insert into book (author, locations, title, theme_id) values ('Brian W. Kernighan', 3990, 'Jak Unix tworzył historię', 5);
 insert into book (author, locations, title, theme_id) values ('Ken Follett', 6799, 'Lot ćmy', 6);
+insert into book (author, locations, title, theme_id) values ('Elton Stoneman', 12928, 'Nauka Dockera w miesiąc', 5);
+insert into book (author, locations, title, theme_id) values ('Elton Stoneman', 17125, 'Nauka Kubernetesa w miesiąc', 5);
