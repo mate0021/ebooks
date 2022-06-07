@@ -109,3 +109,4 @@ insert into book (author, locations, title, theme_id) values ('Brian W. Kernigha
 insert into book (author, locations, title, theme_id) values ('Ken Follett', 6799, 'Lot ćmy', 6);
 insert into book (author, locations, title, theme_id) values ('Elton Stoneman', 12928, 'Nauka Dockera w miesiąc', 5);
 insert into book (author, locations, title, theme_id) values ('Elton Stoneman', 17125, 'Nauka Kubernetesa w miesiąc', 5);
+insert into book (author, locations, title, theme_id) values ('Blake J. Harris', 10291, 'Wojny konsolowe', 2);
