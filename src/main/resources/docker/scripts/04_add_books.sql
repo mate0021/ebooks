@@ -112,3 +112,4 @@ insert into book (author, locations, title, theme_id) values ('Elton Stoneman', 
 insert into book (author, locations, title, theme_id) values ('Blake J. Harris', 10291, 'Wojny konsolowe', 2);
 insert into book (author, locations, title, theme_id) values ('Marek Kądzielski', 3514, 'Wolny strzelec', 16);
 insert into book (author, locations, title, theme_id) values ('J. Siegel, Tina Payne-Bryson', 2386, 'The Yes Brain. Mózg na tak', 10);
+insert into book (author, locations, title, theme_id) values ('Jacek Ponikiewski', 1283, 'DNA stresu', 13);
