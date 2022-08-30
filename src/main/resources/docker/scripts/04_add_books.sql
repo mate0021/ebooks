@@ -113,3 +113,6 @@ insert into book (author, locations, title, theme_id) values ('Blake J. Harris',
 insert into book (author, locations, title, theme_id) values ('Marek Kądzielski', 3514, 'Wolny strzelec', 16);
 insert into book (author, locations, title, theme_id) values ('J. Siegel, Tina Payne-Bryson', 2386, 'The Yes Brain. Mózg na tak', 10);
 insert into book (author, locations, title, theme_id) values ('Jacek Ponikiewski', 1283, 'DNA stresu', 13);
+insert into book (author, locations, title, theme_id) values ('Agnieszka Kozak, Jacek Wasilewski', 5507, 'Uwięzieni w słowach rodziców. Jak uwolnić się od zaklęć, które rzucono na nas w dzieciństwie', 10);
+insert into book (author, locations, title, theme_id) values ('Ilona Wiśniewska', 2915, 'Migot', 1);
+insert into book (author, locations, title, theme_id) values ('Andrea Camilleri', 3941, 'Głosy nocy', 7);
