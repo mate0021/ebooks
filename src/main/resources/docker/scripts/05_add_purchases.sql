@@ -101,3 +101,6 @@ insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/05/31', 17.28, 113, 1, 2);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/06/24', 8.91, 114, 1, 2);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/08/16', 8.91, 115, 1, 2);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/08/30', 24.70, 116, 1, 2);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/08/30', 17.94, 117, 1, 2);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2022/08/30', 20.88, 118, 1, 2);
