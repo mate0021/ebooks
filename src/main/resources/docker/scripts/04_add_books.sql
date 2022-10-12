@@ -117,3 +117,4 @@ insert into book (author, locations, title, theme_id) values ('Agnieszka Kozak, 
 insert into book (author, locations, title, theme_id) values ('Ilona Wiśniewska', 2915, 'Migot', 1);
 insert into book (author, locations, title, theme_id) values ('Andrea Camilleri', 3941, 'Głosy nocy', 7);
 insert into book (author, locations, title, theme_id) values ('Krzysztof Kotowski', 2862, 'Krew snajperów', 1);
+insert into book (author, locations, title, theme_id) values ('Przemysław Waingertner', 3507, 'Czwarta stolica. Kiedy Łódź rządziła Polską', 2);
