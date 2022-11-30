@@ -119,3 +119,4 @@ insert into book (author, locations, title, theme_id) values ('Andrea Camilleri'
 insert into book (author, locations, title, theme_id) values ('Krzysztof Kotowski', 2862, 'Krew snajperów', 1);
 insert into book (author, locations, title, theme_id) values ('Przemysław Waingertner', 3507, 'Czwarta stolica. Kiedy Łódź rządziła Polską', 2);
 insert into book (author, locations, title, theme_id) values ('Jacek Komuda', 8390, 'Galeony wojny', 8);
+insert into book (author, locations, title, theme_id) values ('Jason Schreier', 4503, 'Krew, pot i piksele. Chwalebne i niepokojące opowieści o tym, jak robi się gry.', 2);
