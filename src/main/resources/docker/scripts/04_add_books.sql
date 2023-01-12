@@ -122,3 +122,5 @@ insert into book (author, locations, title, theme_id) values ('Jacek Komuda', 83
 insert into book (author, locations, title, theme_id) values ('Jason Schreier', 4503, 'Krew, pot i piksele. Chwalebne i niepokojące opowieści o tym, jak robi się gry.', 2);
 insert into book (author, locations, title, theme_id) values ('Christoph Biermann', 5451, 'Piłkarscy hakerzy. O rewolucji w futbolu i sztuce zbierania danych.', 4);
 insert into book (author, locations, title, theme_id) values ('Michael Cox', 6992, 'Gegenpressing i tiki-taka. Jak rodził się nowoczesny europejski futbol.', 4);
+insert into book (author, locations, title, theme_id) values ('Soumen Chatterjee', 3626, 'Google Cloud Certified Professional Cloud Architect. Wprowadzenie do platformy i materiały egzaminacyjne. Wydanie II', 5);
+
