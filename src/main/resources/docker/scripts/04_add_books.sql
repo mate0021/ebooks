@@ -125,3 +125,4 @@ insert into book (author, locations, title, theme_id) values ('Michael Cox', 699
 insert into book (author, locations, title, theme_id) values ('Soumen Chatterjee', 3626, 'Google Cloud Certified Professional Cloud Architect. Wprowadzenie do platformy i materiały egzaminacyjne. Wydanie II', 5);
 insert into book (author, locations, title, theme_id) values ('Marie Taylor. Steve Crabb', 10535, 'Coaching i mentoring biznesowy dla bystrzaków', 13);
 insert into book (author, locations, title, theme_id) values ('Tony Buzan', 2837, 'Mistrzowskie mapowanie myśli', 13);
+insert into book (author, locations, title, theme_id) values ('Marta Iwanowska-Polkowska', 5192, 'Nażyć się', 13);
