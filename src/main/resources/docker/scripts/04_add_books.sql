@@ -126,3 +126,4 @@ insert into book (author, locations, title, theme_id) values ('Soumen Chatterjee
 insert into book (author, locations, title, theme_id) values ('Marie Taylor. Steve Crabb', 10535, 'Coaching i mentoring biznesowy dla bystrzaków', 13);
 insert into book (author, locations, title, theme_id) values ('Tony Buzan', 2837, 'Mistrzowskie mapowanie myśli', 13);
 insert into book (author, locations, title, theme_id) values ('Marta Iwanowska-Polkowska', 5192, 'Nażyć się', 13);
+insert into book (author, locations, title, theme_id) values ('Katarzyna Gubała', 2348, 'Wege energia', 17);
