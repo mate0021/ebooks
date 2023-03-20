@@ -14,3 +14,4 @@ insert into theme(theme) values ('Selfdev');
 insert into theme(theme) values ('Horror');
 insert into theme(theme) values ('Finanse');
 insert into theme(theme) values ('Biznes');
+insert into theme(theme) values ('Kuchnia');
