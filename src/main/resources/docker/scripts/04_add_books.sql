@@ -127,4 +127,4 @@ insert into book (author, locations, title, theme_id) values ('Marie Taylor. Ste
 insert into book (author, locations, title, theme_id) values ('Tony Buzan', 2837, 'Mistrzowskie mapowanie myśli', 13);
 insert into book (author, locations, title, theme_id) values ('Marta Iwanowska-Polkowska', 5192, 'Nażyć się', 13);
 insert into book (author, locations, title, theme_id) values ('Katarzyna Gubała', 2348, 'Wege energia', 17);
-insert into book (author, locations, title, theme_id) values ('Daniel Zingaro', 0, 'Myślenie algorytmiczne. Jak rozwiązywać problemy za pomocą algorytmów', 5);
+insert into book (author, locations, title, theme_id) values ('Daniel Zingaro', 14048, 'Myślenie algorytmiczne. Jak rozwiązywać problemy za pomocą algorytmów', 5);
