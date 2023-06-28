@@ -129,3 +129,4 @@ insert into book (author, locations, title, theme_id) values ('Marta Iwanowska-P
 insert into book (author, locations, title, theme_id) values ('Katarzyna Gubała', 2348, 'Wege energia', 17);
 insert into book (author, locations, title, theme_id) values ('Daniel Zingaro', 14048, 'Myślenie algorytmiczne. Jak rozwiązywać problemy za pomocą algorytmów', 5);
 insert into book (author, locations, title, theme_id) values ('Jacek Komuda', 6671, 'Westerplatte', 8);
+insert into book (author, locations, title, theme_id) values ('Sid Meier', 4572, 'Wspomnienia. Oficjalna autobiografia twórcy Cywilizacji', 5);
