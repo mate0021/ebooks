@@ -131,3 +131,4 @@ insert into book (author, locations, title, theme_id) values ('Daniel Zingaro', 
 insert into book (author, locations, title, theme_id) values ('Jacek Komuda', 6671, 'Westerplatte', 8);
 insert into book (author, locations, title, theme_id) values ('Sid Meier', 4572, 'Wspomnienia. Oficjalna autobiografia twórcy Cywilizacji', 5);
 insert into book (author, locations, title, theme_id) values ('Chris Riccomini, Dmitriy Ryaboy', 246, 'Brakujący plik Readme', 5);
+insert into book (author, locations, title, theme_id) values ('Piotr Kościelny', 5636, 'Dom', 7);
