@@ -134,3 +134,4 @@ insert into book (author, locations, title, theme_id) values ('Chris Riccomini, 
 insert into book (author, locations, title, theme_id) values ('Piotr Kościelny', 5636, 'Dom', 7);
 insert into book (author, locations, title, theme_id) values ('Krystyna Kurczab-Redlich', 10525, 'Głową o mur Kremla', 1);
 insert into book (author, locations, title, theme_id) values ('Grzegorz Mnich', 4166, 'Stalinowska codzienność. Łódź w latach 1949 - 1956', 2);
+insert into book (author, locations, title, theme_id) values ('Ken Follett', 12771, 'Niech stanie się światłość', 9);
