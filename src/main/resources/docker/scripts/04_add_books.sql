@@ -137,3 +137,5 @@ insert into book (author, locations, title, theme_id) values ('Grzegorz Mnich', 
 insert into book (author, locations, title, theme_id) values ('Ken Follett', 12771, 'Niech stanie się światłość', 9);
 insert into book (author, locations, title, theme_id) values ('Krzysztof Lesiakowski', 5980, 'Gomułkowska rzeczywistość. Łódź w latach 1956 - 1970', 2);
 insert into book (author, locations, title, theme_id) values ('Janusz Gudowski', 2406, 'W poprzek kultur', 1);
+insert into book (author, locations, title, theme_id) values ('Witold Jarno', 5111, 'Gierkowska prosperita. Łódź w latach 1971 - 1980', 2);
+insert into book (author, locations, title, theme_id) values ('Leszek Olejnik', 6772, 'Dekada Solidarności. Łódź w latach 1980 - 1989', 2);
