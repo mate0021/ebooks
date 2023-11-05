@@ -140,3 +140,5 @@ insert into book (author, locations, title, theme_id) values ('Janusz Gudowski',
 insert into book (author, locations, title, theme_id) values ('Witold Jarno', 5111, 'Gierkowska prosperita. Łódź w latach 1971 - 1980', 2);
 insert into book (author, locations, title, theme_id) values ('Leszek Olejnik', 6772, 'Dekada Solidarności. Łódź w latach 1980 - 1989', 2);
 insert into book (author, locations, title, theme_id) values ('Bogusław Politowski', 2863, '5/25 Saperzy w strefie śmierci', 1);
+insert into book (author, locations, title, theme_id) values ('Titus Winters, Tom Manshreck, Hyrum Wright', 16568, 'Inżynieria oprogramowania według Google', 5);
+insert into book (author, locations, title, theme_id) values ('Michał Zachodny', 4409, 'Polska myśl szkoleniowa', 4);
