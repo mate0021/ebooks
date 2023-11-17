@@ -142,3 +142,4 @@ insert into book (author, locations, title, theme_id) values ('Leszek Olejnik', 
 insert into book (author, locations, title, theme_id) values ('Bogusław Politowski', 2863, '5/25 Saperzy w strefie śmierci', 1);
 insert into book (author, locations, title, theme_id) values ('Titus Winters, Tom Manshreck, Hyrum Wright', 16568, 'Inżynieria oprogramowania według Google', 5);
 insert into book (author, locations, title, theme_id) values ('Michał Zachodny', 4409, 'Polska myśl szkoleniowa', 4);
+insert into book (author, locations, title, theme_id) values ('Matt Krantz', 9400, 'Analiza fundamentalna dla bystrzaków', 15);
