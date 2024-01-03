@@ -144,3 +144,4 @@ insert into book (author, locations, title, theme_id) values ('Titus Winters, To
 insert into book (author, locations, title, theme_id) values ('Michał Zachodny', 4409, 'Polska myśl szkoleniowa', 4);
 insert into book (author, locations, title, theme_id) values ('Matt Krantz', 9400, 'Analiza fundamentalna dla bystrzaków', 15);
 insert into book (author, locations, title, theme_id) values ('Ewa Sapieżyńska', 1790, 'Nie jestem twoim Polakiem', 1);
+insert into book (author, locations, title, theme_id) values ('Barbara Lech', 3600, 'Kiedy odwlekasz i narzekasz... 102 sposoby na pokonanie prokrastynacji', 13);
