@@ -145,3 +145,8 @@ insert into book (author, locations, title, theme_id) values ('Michał Zachodny'
 insert into book (author, locations, title, theme_id) values ('Matt Krantz', 9400, 'Analiza fundamentalna dla bystrzaków', 15);
 insert into book (author, locations, title, theme_id) values ('Ewa Sapieżyńska', 1790, 'Nie jestem twoim Polakiem', 1);
 insert into book (author, locations, title, theme_id) values ('Barbara Lech', 3600, 'Kiedy odwlekasz i narzekasz... 102 sposoby na pokonanie prokrastynacji', 13);
+insert into book (author, locations, title, theme_id) values ('Piotr Marecki, Tomasz Tdc Cieślewicz', 4098, 'Oni migają tymi kolorami w sposób profesjonalny. Narodziny gamedevu z ducha demosceny w Polsce', 5);
+insert into book (author, locations, title, theme_id) values ('Tomas Forro', 4045, 'Gorączka złota. Jak upadała Wenezuela', 1);
+insert into book (author, locations, title, theme_id) values ('Wojciech Górecki, Bartosz Józefiak', 5156, 'Łódź. Miasto po przejściach', 1);
+insert into book (author, locations, title, theme_id) values ('Doug Sillars', 5393, 'High Performance Android Apps', 5);
+insert into book (author, locations, title, theme_id) values ('Chet Haase', 9108, 'Androidy: Zespół, który stworzył system operacyjny Android', 5);
