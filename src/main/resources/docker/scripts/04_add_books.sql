@@ -150,3 +150,4 @@ insert into book (author, locations, title, theme_id) values ('Tomas Forro', 404
 insert into book (author, locations, title, theme_id) values ('Wojciech Górecki, Bartosz Józefiak', 5156, 'Łódź. Miasto po przejściach', 1);
 insert into book (author, locations, title, theme_id) values ('Doug Sillars', 5393, 'High Performance Android Apps', 5);
 insert into book (author, locations, title, theme_id) values ('Chet Haase', 9108, 'Androidy: Zespół, który stworzył system operacyjny Android', 5);
+insert into book (author, locations, title, theme_id) values ('Bill Aulet', 5387, 'Przedsiębiorczość zdyscyplinowana. Od startupu do sukcesu w 24 krokach', 16);
