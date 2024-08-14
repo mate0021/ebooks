@@ -151,3 +151,5 @@ insert into book (author, locations, title, theme_id) values ('Wojciech Górecki
 insert into book (author, locations, title, theme_id) values ('Doug Sillars', 5393, 'High Performance Android Apps', 5);
 insert into book (author, locations, title, theme_id) values ('Chet Haase', 9108, 'Androidy: Zespół, który stworzył system operacyjny Android', 5);
 insert into book (author, locations, title, theme_id) values ('Bill Aulet', 5387, 'Przedsiębiorczość zdyscyplinowana. Od startupu do sukcesu w 24 krokach', 16);
+insert into book (author, locations, title, theme_id) values ('Patrick Lencioni', 2423, 'Pięć dysfunkcji pracy zespołowej. Opowieść o przywództwie', 16);
+insert into book (author, locations, title, theme_id) values ('Patrick Lencioni', 3053, 'Trzy oznaki pracy, która nie daje szczęścia. Opowieść o przywództwie', 16);
