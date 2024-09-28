@@ -153,3 +153,6 @@ insert into book (author, locations, title, theme_id) values ('Chet Haase', 9108
 insert into book (author, locations, title, theme_id) values ('Bill Aulet', 5387, 'Przedsiębiorczość zdyscyplinowana. Od startupu do sukcesu w 24 krokach', 16);
 insert into book (author, locations, title, theme_id) values ('Patrick Lencioni', 2423, 'Pięć dysfunkcji pracy zespołowej. Opowieść o przywództwie', 16);
 insert into book (author, locations, title, theme_id) values ('Patrick Lencioni', 3053, 'Trzy oznaki pracy, która nie daje szczęścia. Opowieść o przywództwie', 16);
+insert into book (author, locations, title, theme_id) values ('Jeremy Kubica', 7424, 'Struktury danych z przymrużeniem oka. Zabawna przygoda z przykładami pachnącymi kawą', 5);
+insert into book (author, locations, title, theme_id) values ('Kevin Trudeau', 7182, 'Superpamięć. Trening z Kevinem Trudeau', 13);
+insert into book (author, locations, title, theme_id) values ('Alicja Grzesiak', 6896, 'Zatroszcz się o swoje wewnętrzne dziecko i odkryj swój potencjał', 10);
