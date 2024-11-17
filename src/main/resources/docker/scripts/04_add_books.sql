@@ -157,3 +157,4 @@ insert into book (author, locations, title, theme_id) values ('Jeremy Kubica', 7
 insert into book (author, locations, title, theme_id) values ('Kevin Trudeau', 7182, 'Superpamięć. Trening z Kevinem Trudeau', 13);
 insert into book (author, locations, title, theme_id) values ('Alicja Grzesiak', 6896, 'Zatroszcz się o swoje wewnętrzne dziecko i odkryj swój potencjał', 10);
 insert into book (author, locations, title, theme_id) values ('Igor Ryżow', 3248, 'Negocjacje z potworami. Jak osiągnąć to, co chcemy negocjując z silniejszymi od siebie', 13);
+insert into book (author, locations, title, theme_id) values ('Sławek Gortych', 5731, 'Schronisko, które przestało istnieć', 7);
