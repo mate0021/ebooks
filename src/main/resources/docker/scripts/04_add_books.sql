@@ -159,4 +159,4 @@ insert into book (author, locations, title, theme_id) values ('Alicja Grzesiak',
 insert into book (author, locations, title, theme_id) values ('Igor Ryżow', 3248, 'Negocjacje z potworami. Jak osiągnąć to, co chcemy negocjując z silniejszymi od siebie', 13);
 insert into book (author, locations, title, theme_id) values ('Sławek Gortych', 5731, 'Schronisko, które przestało istnieć', 7);
 insert into book (author, locations, title, theme_id) values ('David Perlmutter, Kristin Loberg', 8657, 'Mózg na zbożowym detoksie. Zaskakująca prawda o pszenicy, węglowodanach i cukrze - cichych zabójcach Twojego mózgu', 17);
-
+insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5202, 'Nie ma tego złego', 8);
