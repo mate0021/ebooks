@@ -160,3 +160,5 @@ insert into book (author, locations, title, theme_id) values ('Igor Ryżow', 324
 insert into book (author, locations, title, theme_id) values ('Sławek Gortych', 5731, 'Schronisko, które przestało istnieć', 7);
 insert into book (author, locations, title, theme_id) values ('David Perlmutter, Kristin Loberg', 8657, 'Mózg na zbożowym detoksie. Zaskakująca prawda o pszenicy, węglowodanach i cukrze - cichych zabójcach Twojego mózgu', 17);
 insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5202, 'Nie ma tego złego', 8);
+insert into book (author, locations, title, theme_id) values ('Tanya Janca', 6646, 'Alicja i Bob. Bezpieczeństwo aplikacji w praktyce', 5);
+
