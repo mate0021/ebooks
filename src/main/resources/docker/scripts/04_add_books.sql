@@ -161,4 +161,5 @@ insert into book (author, locations, title, theme_id) values ('Sławek Gortych',
 insert into book (author, locations, title, theme_id) values ('David Perlmutter, Kristin Loberg', 8657, 'Mózg na zbożowym detoksie. Zaskakująca prawda o pszenicy, węglowodanach i cukrze - cichych zabójcach Twojego mózgu', 17);
 insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5202, 'Nie ma tego złego', 8);
 insert into book (author, locations, title, theme_id) values ('Tanya Janca', 6646, 'Alicja i Bob. Bezpieczeństwo aplikacji w praktyce', 5);
+insert into book (author, locations, title, theme_id) values ('Bartłomiej Boral, Tomasz Boral', 3870, 'Techniki zapamiętywania', 13);
 
