@@ -162,4 +162,9 @@ insert into book (author, locations, title, theme_id) values ('David Perlmutter,
 insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5202, 'Nie ma tego złego', 8);
 insert into book (author, locations, title, theme_id) values ('Tanya Janca', 6646, 'Alicja i Bob. Bezpieczeństwo aplikacji w praktyce', 5);
 insert into book (author, locations, title, theme_id) values ('Bartłomiej Boral, Tomasz Boral', 3870, 'Techniki zapamiętywania', 13);
+insert into book (author, locations, title, theme_id) values ('Arthur C. Clarke', 3649, 'Koniec dzieciństwa', 3);
+insert into book (author, locations, title, theme_id) values ('Remigiusz Mróz', 9431, 'Z pierwszej piłki', 7);
+insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5235, 'Głodna puszcza', 8);
+insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 4778, 'Skrzynia pełna dusz', 8);
+insert into book (author, locations, title, theme_id) values ('Joanna Berendt, Agnieszka Kozak', 3959, 'Dogadać się z innymi, czyli porozumienie bez przemocy nie tylko w życiu organizacji', 13);
 
