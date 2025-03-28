@@ -132,4 +132,5 @@ insert into reading_progress (reading_start, reading_end, key_book, key_reader) 
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/01/28', null, 161, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/02/12', '2025/02/26', 162, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/03/13', null, 164, 1);
-insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/03/16', null, 165, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/03/16', '2025/03/27', 165, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2025/03/27', null, 166, 1);
