@@ -168,4 +168,5 @@ insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 5
 insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 4778, 'Skrzynia pełna dusz', 8);
 insert into book (author, locations, title, theme_id) values ('Joanna Berendt, Agnieszka Kozak', 3959, 'Dogadać się z innymi, czyli porozumienie bez przemocy nie tylko w życiu organizacji', 13);
 insert into book (author, locations, title, theme_id) values ('Peter Handke', 1657, 'Strach bramkarza przed jedenastką', 7);
+insert into book (author, locations, title, theme_id) values ('Clive Cusser', 4523, 'Wir Pacyfiku', 6);
 
