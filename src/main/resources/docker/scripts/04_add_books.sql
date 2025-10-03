@@ -169,4 +169,5 @@ insert into book (author, locations, title, theme_id) values ('Marcin Mortka', 4
 insert into book (author, locations, title, theme_id) values ('Joanna Berendt, Agnieszka Kozak', 3959, 'Dogadać się z innymi, czyli porozumienie bez przemocy nie tylko w życiu organizacji', 13);
 insert into book (author, locations, title, theme_id) values ('Peter Handke', 1657, 'Strach bramkarza przed jedenastką', 7);
 insert into book (author, locations, title, theme_id) values ('Clive Cusser', 4523, 'Wir Pacyfiku', 6);
+insert into book (author, locations, title, theme_id) values ('Joshua Bloch', 14314, 'Java - efektywne programowanie. Wydanie II', 5);
 
