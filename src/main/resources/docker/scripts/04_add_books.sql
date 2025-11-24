@@ -170,4 +170,8 @@ insert into book (author, locations, title, theme_id) values ('Joanna Berendt, A
 insert into book (author, locations, title, theme_id) values ('Peter Handke', 1657, 'Strach bramkarza przed jedenastką', 7);
 insert into book (author, locations, title, theme_id) values ('Clive Cusser', 4523, 'Wir Pacyfiku', 6);
 insert into book (author, locations, title, theme_id) values ('Joshua Bloch', 14314, 'Java - efektywne programowanie. Wydanie II', 5);
+insert into book (author, locations, title, theme_id) values ('Bartłomiej Stańdo', 5492, 'Widzew - Reaktywacja', 4);
+insert into book (author, locations, title, theme_id) values ('Tobiasz Maliński', 7577, 'I Ty możesz zostać Warrenem Buffetem, czyli inwestowanie skoncentrowane na GPW', 15);
+insert into book (author, locations, title, theme_id) values ('Chip Huyen', 9754, 'Jak projektować systemy uczenia maszynowego', 5);
+insert into book (author, locations, title, theme_id) values ('Jonathan Wilson', 8491, 'Odwrócona piramida. Historia taktyki piłkarskiej', 4);
 
