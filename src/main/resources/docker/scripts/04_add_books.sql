@@ -174,4 +174,4 @@ insert into book (author, locations, title, theme_id) values ('Bartłomiej Stań
 insert into book (author, locations, title, theme_id) values ('Tobiasz Maliński', 7577, 'I Ty możesz zostać Warrenem Buffetem, czyli inwestowanie skoncentrowane na GPW', 15);
 insert into book (author, locations, title, theme_id) values ('Chip Huyen', 9754, 'Jak projektować systemy uczenia maszynowego', 5);
 insert into book (author, locations, title, theme_id) values ('Jonathan Wilson', 8491, 'Odwrócona piramida. Historia taktyki piłkarskiej', 4);
-
+insert into book (author, locations, title, theme_id) values ('Kurt Bittner, Patricia Kong, Dave West', 184, 'Nexus, czyli skalowalny scrum', 5);
