@@ -175,3 +175,4 @@ insert into book (author, locations, title, theme_id) values ('Tobiasz Maliński
 insert into book (author, locations, title, theme_id) values ('Chip Huyen', 9754, 'Jak projektować systemy uczenia maszynowego', 5);
 insert into book (author, locations, title, theme_id) values ('Jonathan Wilson', 8491, 'Odwrócona piramida. Historia taktyki piłkarskiej', 4);
 insert into book (author, locations, title, theme_id) values ('Kurt Bittner, Patricia Kong, Dave West', 184, 'Nexus, czyli skalowalny scrum', 5);
+insert into book (author, locations, title, theme_id) values ('Błażej Ciarkowski', 5488, 'Łódź - ziemia wymyślona', 2);
