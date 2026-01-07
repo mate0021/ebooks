@@ -178,4 +178,6 @@ insert into book (author, locations, title, theme_id) values ('Kurt Bittner, Pat
 insert into book (author, locations, title, theme_id) values ('Błażej Ciarkowski', 5488, 'Łódź - ziemia wymyślona', 2);
 insert into book (author, locations, title, theme_id) values ('Andrzej Sapkowski', 3616, 'Wiedźmin: Rozdroże kruków', 8);
 insert into book (author, locations, title, theme_id) values ('Remigiusz Mróz', 7411, 'Węzeł czasu', 7);
-
+insert into book (author, locations, title, theme_id) values ('Pooja Sharma', 5165, 'Simplified Machine Learning', 5);
+insert into book (author, locations, title, theme_id) values ('Aswath Damodaran', 3443, 'Wycena. Minipodręcznik dla inwestorów giełdowych', 15);
+insert into book (author, locations, title, theme_id) values ('Marta Madejska', 6135, 'Aleja Włókniarek', 1);
