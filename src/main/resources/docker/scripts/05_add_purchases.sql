@@ -160,3 +160,5 @@ insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2025/11/06', 17.01, 176, 1, 2);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2025/11/28', 8.91, 177, 1, 2);
 insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2025/11/03', 0.0, 178, 1, 1);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2025/12/26', 26.66, 179, 1, 3);
+insert into shopping (buy_date, price, key_book, key_reader, key_shop) values ('2025/12/26', 17.90, 178, 1, 3);
