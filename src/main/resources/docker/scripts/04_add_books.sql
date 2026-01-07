@@ -176,3 +176,6 @@ insert into book (author, locations, title, theme_id) values ('Chip Huyen', 9754
 insert into book (author, locations, title, theme_id) values ('Jonathan Wilson', 8491, 'Odwrócona piramida. Historia taktyki piłkarskiej', 4);
 insert into book (author, locations, title, theme_id) values ('Kurt Bittner, Patricia Kong, Dave West', 184, 'Nexus, czyli skalowalny scrum', 5);
 insert into book (author, locations, title, theme_id) values ('Błażej Ciarkowski', 5488, 'Łódź - ziemia wymyślona', 2);
+insert into book (author, locations, title, theme_id) values ('Andrzej Sapkowski', 3616, 'Wiedźmin: Rozdroże kruków', 8);
+insert into book (author, locations, title, theme_id) values ('Remigiusz Mróz', 7411, 'Węzeł czasu', 7);
+
