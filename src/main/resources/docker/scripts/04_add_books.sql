@@ -181,3 +181,6 @@ insert into book (author, locations, title, theme_id) values ('Remigiusz Mróz',
 insert into book (author, locations, title, theme_id) values ('Pooja Sharma', 5165, 'Simplified Machine Learning', 5);
 insert into book (author, locations, title, theme_id) values ('Aswath Damodaran', 3443, 'Wycena. Minipodręcznik dla inwestorów giełdowych', 15);
 insert into book (author, locations, title, theme_id) values ('Marta Madejska', 6135, 'Aleja Włókniarek', 1);
+insert into book (author, locations, title, theme_id) values ('Marek Szymaniak', 3934, 'Zapaść. Reportaże z mniejszych miast', 1);
+insert into book (author, locations, title, theme_id) values ('Leif H. Smith, Todd M. Kays', 7681, 'Psychologia sportu dla bystrzaków', 13);
+insert into book (author, locations, title, theme_id) values ('Paweł Zaręba-Śmietański', 7787, 'Świadomy inwestor. Odkrywanie ukrytego potencjału spółki', 15);
