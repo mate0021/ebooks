@@ -185,3 +185,4 @@ insert into book (author, locations, title, theme_id) values ('Marek Szymaniak',
 insert into book (author, locations, title, theme_id) values ('Leif H. Smith, Todd M. Kays', 7681, 'Psychologia sportu dla bystrzaków', 13);
 insert into book (author, locations, title, theme_id) values ('Paweł Zaręba-Śmietański', 7787, 'Świadomy inwestor. Odkrywanie ukrytego potencjału spółki', 15);
 insert into book (author, locations, title, theme_id) values ('Satu Ramo', 4372, 'Hildur', 7);
+insert into book (author, locations, title, theme_id) values ('Katarzyna Walęcka-Matyja, Elżbieta Napora', 147, 'Mam, jestem, mogę. Kształtowanie odporności psychicznej u dzieci i młodzieży', 10);
