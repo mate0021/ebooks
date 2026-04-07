@@ -186,3 +186,10 @@ insert into book (author, locations, title, theme_id) values ('Leif H. Smith, To
 insert into book (author, locations, title, theme_id) values ('Paweł Zaręba-Śmietański', 7787, 'Świadomy inwestor. Odkrywanie ukrytego potencjału spółki', 15);
 insert into book (author, locations, title, theme_id) values ('Satu Ramo', 4372, 'Hildur', 7);
 insert into book (author, locations, title, theme_id) values ('Katarzyna Walęcka-Matyja, Elżbieta Napora', 147, 'Mam, jestem, mogę. Kształtowanie odporności psychicznej u dzieci i młodzieży', 10);
+insert into book (author, locations, title, theme_id) values ('Michał Okoński', 4835, 'Stałe fragmenty. Piękny i wstrętny. Opowieść o dwóch twarzach futbolu', 4);
+insert into book (author, locations, title, theme_id) values ('Emmanuel Todd', 6334, 'Klęska Zachodu', 2);
+insert into book (author, locations, title, theme_id) values ('Michał Okoński', 4914, 'Światło bramki', 4);
+insert into book (author, locations, title, theme_id) values ('Jason Schreier', 5025, 'Wciśnij reset. Triumfy i fakapy w przemyśle gier wideo', 5);
+insert into book (author, locations, title, theme_id) values ('Chris Herring', 6769, 'Blood in the Garden. Brutalna historia New York Knicks z lat 90', 2);
+insert into book (author, locations, title, theme_id) values ('Morgan Housel', 4117, 'Sztuka wydawania pieniędzy. Proste sposoby na pełniejsze życie', 15);
+insert into book (author, locations, title, theme_id) values ('Jason Schreier', 5866, 'Play Nice. Powstanie, upadek i przyszłość Blizzarda', 5);
