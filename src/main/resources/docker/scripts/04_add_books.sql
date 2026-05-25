@@ -193,3 +193,4 @@ insert into book (author, locations, title, theme_id) values ('Jason Schreier', 
 insert into book (author, locations, title, theme_id) values ('Chris Herring', 6769, 'Blood in the Garden. Brutalna historia New York Knicks z lat 90', 2);
 insert into book (author, locations, title, theme_id) values ('Morgan Housel', 4117, 'Sztuka wydawania pieniędzy. Proste sposoby na pełniejsze życie', 15);
 insert into book (author, locations, title, theme_id) values ('Jason Schreier', 5866, 'Play Nice. Powstanie, upadek i przyszłość Blizzarda', 5);
+insert into book (author, locations, title, theme_id) values ('Susan Forward, Donna Frazier', 5071, 'Szantaż emocjonalny. Jak obronić się przed manipulacją i wykorzystaniem', 13);
