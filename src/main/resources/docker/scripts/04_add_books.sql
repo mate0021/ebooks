@@ -194,3 +194,4 @@ insert into book (author, locations, title, theme_id) values ('Chris Herring', 6
 insert into book (author, locations, title, theme_id) values ('Morgan Housel', 4117, 'Sztuka wydawania pieniędzy. Proste sposoby na pełniejsze życie', 15);
 insert into book (author, locations, title, theme_id) values ('Jason Schreier', 5866, 'Play Nice. Powstanie, upadek i przyszłość Blizzarda', 5);
 insert into book (author, locations, title, theme_id) values ('Susan Forward, Donna Frazier', 5071, 'Szantaż emocjonalny. Jak obronić się przed manipulacją i wykorzystaniem', 13);
+insert into book (author, locations, title, theme_id) values ('Susan Forward, Craig Buck', 4896, 'Toksyczni rodzice. Jak się uwolnić od bolesnej spuścizny i rozpocząć nowe życie', 13);
