@@ -149,3 +149,4 @@ insert into reading_progress (reading_start, reading_end, key_book, key_reader) 
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2026/05/25', null, 196, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2026/06/20', '2026/08/01', 197, 1);
 insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2026/08/20', '2026/10/03', 190, 1);
+insert into reading_progress (reading_start, reading_end, key_book, key_reader) values ('2026/10/03', null, 193, 1);
