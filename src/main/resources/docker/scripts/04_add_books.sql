@@ -198,6 +198,7 @@ insert into book (author, locations, title, theme_id) values ('Susan Forward, Cr
 insert into book (author, locations, title, theme_id) values ('Małgorzata Gołota', 3650, 'Jak być dobrym rodzicem? Książka o rodzicielstwie w czasach social mediów, opresyjnych szkół i samotności', 10);
 insert into book (author, locations, title, theme_id) values ('Pilar Quintana', 2462, 'Otchłanie', 10);
 insert into book (author, locations, title, theme_id) values ('Piotr Wróblewski', 20988, 'Algorytmy w Pythonie. Techniki programowania dla praktyków', 5);
+insert into book (author, locations, title, theme_id) values ('Mel Robbins', 4703, 'Teoria pozwól im', 13);
 
 
 
